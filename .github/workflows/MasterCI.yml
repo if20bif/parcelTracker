@@ -6,7 +6,12 @@ name: MasterCI
 on:
   pull_request:
     branches: [ "main" ]
-
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: string
+        default: DEV
+        required: true
 jobs:
   build:
 

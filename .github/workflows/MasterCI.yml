@@ -16,7 +16,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    name: Master CI
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -41,7 +41,7 @@ jobs:
   deploy:
     #Depends on build's job
     needs: build
-    name: Deploy
+    name: CD
     #Run on Ubuntu using the latest version
     runs-on: ubuntu-latest
     steps:

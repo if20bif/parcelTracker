@@ -1,18 +1,13 @@
-package at.fhtw.swen3.persistence;
+package at.fhtw.swen3.services.dto;
 
-import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
+
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-import java.util.*;
 import javax.annotation.Generated;
 
 /**
@@ -24,18 +19,23 @@ import javax.annotation.Generated;
 public class Recipient {
 
   @JsonProperty("name")
+  @Pattern(regexp = "[A-Z][A-Za-z0-9- ]*")
   private String name;
 
   @JsonProperty("street")
+  @Pattern(regexp = "[A-Za-z]+ [0-9]+[0-9a-z/]+")
   private String street;
 
   @JsonProperty("postalCode")
+  @Pattern(regexp = "A-[0-9]{4}")
   private String postalCode;
 
   @JsonProperty("city")
+  @Pattern(regexp = "[A-Z][A-Za-z0-9- ]*")
   private String city;
 
   @JsonProperty("country")
+  @Pattern(regexp = "[A-Za-zöÖüÜäÄåç]+")
   private String country;
 
   public Recipient name(String name) {

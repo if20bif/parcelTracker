@@ -1,20 +1,16 @@
-package at.fhtw.swen3.persistence;
+package at.fhtw.swen3.services.dto;
 
-import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.time.OffsetDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
+
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-import java.util.*;
 import javax.annotation.Generated;
 
 /**
@@ -26,9 +22,11 @@ import javax.annotation.Generated;
 public class HopArrival {
 
   @JsonProperty("code")
+  @Pattern(regexp = "^[A-Z]{4}\\d{1,4}$")
   private String code;
 
   @JsonProperty("description")
+  @Pattern(regexp = "[A-Za-z0-9- ]+")
   private String description;
 
   @JsonProperty("dateTime")

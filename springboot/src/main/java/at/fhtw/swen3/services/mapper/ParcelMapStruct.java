@@ -19,8 +19,8 @@ public class ParcelMapStruct implements Mapper{
         }
 
         return TrackingInformation.builder()
-                .futureHops(hopArrivalEntityToHopArrival(parcelEntity.getFutureHops()))
-                .visitedHops(hopArrivalEntityToHopArrival(parcelEntity.getVisitedHops()))
+                .futureHops(hopArrivalEntityListToHopArrivalList(parcelEntity.getFutureHops()))
+                .visitedHops(hopArrivalEntityListToHopArrivalList(parcelEntity.getVisitedHops()))
                 .state(parcelEntity.getState())
                 .build();
     }
@@ -32,8 +32,8 @@ public class ParcelMapStruct implements Mapper{
         }
 
         return ParcelEntity.builder()
-                .futureHops(hopArrivalToHopArrivalEntity(trackingInformation.getFutureHops()))
-                .visitedHops(hopArrivalToHopArrivalEntity(trackingInformation.getVisitedHops()))
+                .futureHops(hopArrivalListToHopArrivalEntityList(trackingInformation.getFutureHops()))
+                .visitedHops(hopArrivalListToHopArrivalEntityList(trackingInformation.getVisitedHops()))
                 .state(trackingInformation.getState())
                 .build();
     }
@@ -87,12 +87,12 @@ public class ParcelMapStruct implements Mapper{
     }
 
     @Override
-    public List<HopArrival> hopArrivalEntityToHopArrival(List<HopArrivalEntity> hopArrivalEntity) {
+    public List<HopArrival> hopArrivalEntityListToHopArrivalList(List<HopArrivalEntity> hopArrivalEntity) {
         return null;
     }
 
     @Override
-    public List<HopArrivalEntity> hopArrivalToHopArrivalEntity(List<HopArrival> hopArrivalEntity) {
+    public List<HopArrivalEntity> hopArrivalListToHopArrivalEntityList(List<HopArrival> hopArrivalEntity) {
         return null;
     }
 
@@ -124,6 +124,16 @@ public class ParcelMapStruct implements Mapper{
                 .city(recipient.getCity())
                 .country(recipient.getCountry())
                 .build();
+    }
+
+    @Override
+    public HopArrivalEntity hopArrivalToHopArrivalEntity(HopArrival hopArrival) {
+        return null;
+    }
+
+    @Override
+    public HopArrival hopArrivalToHopArrivalEntity(HopArrivalEntity hopArrivalEntity) {
+        return null;
     }
 
 

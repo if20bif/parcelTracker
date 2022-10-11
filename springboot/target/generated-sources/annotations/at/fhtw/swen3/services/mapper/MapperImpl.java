@@ -14,7 +14,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-10T11:23:22+0200",
+    date = "2022-10-11T16:37:34+0200",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class MapperImpl implements Mapper {
@@ -25,9 +25,9 @@ public class MapperImpl implements Mapper {
             return null;
         }
 
-        TrackingInformation.TrackingInformationBuilder trackingInformation = TrackingInformation.builder();
+        TrackingInformation trackingInformation = new TrackingInformation();
 
-        return trackingInformation.build();
+        return trackingInformation;
     }
 
     @Override
@@ -86,28 +86,28 @@ public class MapperImpl implements Mapper {
     }
 
     @Override
-    public List<HopArrival> hopArrivalEntityToHopArrival(List<HopArrivalEntity> hopArrivalEntity) {
+    public List<HopArrival> hopArrivalEntityListToHopArrivalList(List<HopArrivalEntity> hopArrivalEntity) {
         if ( hopArrivalEntity == null ) {
             return null;
         }
 
         List<HopArrival> list = new ArrayList<HopArrival>( hopArrivalEntity.size() );
         for ( HopArrivalEntity hopArrivalEntity1 : hopArrivalEntity ) {
-            list.add( hopArrivalEntityToHopArrival1( hopArrivalEntity1 ) );
+            list.add( hopArrivalToHopArrivalEntity( hopArrivalEntity1 ) );
         }
 
         return list;
     }
 
     @Override
-    public List<HopArrivalEntity> hopArrivalToHopArrivalEntity(List<HopArrival> hopArrivalEntity) {
+    public List<HopArrivalEntity> hopArrivalListToHopArrivalEntityList(List<HopArrival> hopArrivalEntity) {
         if ( hopArrivalEntity == null ) {
             return null;
         }
 
         List<HopArrivalEntity> list = new ArrayList<HopArrivalEntity>( hopArrivalEntity.size() );
         for ( HopArrival hopArrival : hopArrivalEntity ) {
-            list.add( hopArrivalToHopArrivalEntity1( hopArrival ) );
+            list.add( hopArrivalToHopArrivalEntity( hopArrival ) );
         }
 
         return list;
@@ -119,15 +119,9 @@ public class MapperImpl implements Mapper {
             return null;
         }
 
-        Recipient.RecipientBuilder recipient = Recipient.builder();
+        Recipient recipient = new Recipient();
 
-        recipient.name( recipientEntity.getName() );
-        recipient.street( recipientEntity.getStreet() );
-        recipient.postalCode( recipientEntity.getPostalCode() );
-        recipient.city( recipientEntity.getCity() );
-        recipient.country( recipientEntity.getCountry() );
-
-        return recipient.build();
+        return recipient;
     }
 
     @Override
@@ -136,42 +130,30 @@ public class MapperImpl implements Mapper {
             return null;
         }
 
-        RecipientEntity.RecipientEntityBuilder recipientEntity = RecipientEntity.builder();
+        RecipientEntity recipientEntity = new RecipientEntity();
 
-        recipientEntity.name( recipient.getName() );
-        recipientEntity.street( recipient.getStreet() );
-        recipientEntity.postalCode( recipient.getPostalCode() );
-        recipientEntity.city( recipient.getCity() );
-        recipientEntity.country( recipient.getCountry() );
-
-        return recipientEntity.build();
+        return recipientEntity;
     }
 
-    protected HopArrival hopArrivalEntityToHopArrival1(HopArrivalEntity hopArrivalEntity) {
+    @Override
+    public HopArrivalEntity hopArrivalToHopArrivalEntity(HopArrival hopArrival) {
+        if ( hopArrival == null ) {
+            return null;
+        }
+
+        HopArrivalEntity hopArrivalEntity = new HopArrivalEntity();
+
+        return hopArrivalEntity;
+    }
+
+    @Override
+    public HopArrival hopArrivalToHopArrivalEntity(HopArrivalEntity hopArrivalEntity) {
         if ( hopArrivalEntity == null ) {
             return null;
         }
 
         HopArrival hopArrival = new HopArrival();
 
-        hopArrival.setCode( hopArrivalEntity.getCode() );
-        hopArrival.setDescription( hopArrivalEntity.getDescription() );
-        hopArrival.setDateTime( hopArrivalEntity.getDateTime() );
-
         return hopArrival;
-    }
-
-    protected HopArrivalEntity hopArrivalToHopArrivalEntity1(HopArrival hopArrival) {
-        if ( hopArrival == null ) {
-            return null;
-        }
-
-        HopArrivalEntity.HopArrivalEntityBuilder hopArrivalEntity = HopArrivalEntity.builder();
-
-        hopArrivalEntity.code( hopArrival.getCode() );
-        hopArrivalEntity.description( hopArrival.getDescription() );
-        hopArrivalEntity.dateTime( hopArrival.getDateTime() );
-
-        return hopArrivalEntity.build();
     }
 }

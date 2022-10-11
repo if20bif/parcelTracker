@@ -21,10 +21,12 @@ public interface Mapper {
     Parcel ParcelEntityToParcel (ParcelEntity parcelEntity);
     ParcelEntity parcelToParcelEntity (Parcel parcel);
 
-    List<HopArrival> hopArrivalEntityToHopArrival (List<HopArrivalEntity> hopArrivalEntity);
-    List<HopArrivalEntity> hopArrivalToHopArrivalEntity (List<HopArrival> hopArrivalEntity);
+    List<HopArrival> hopArrivalEntityListToHopArrivalList (List<HopArrivalEntity> hopArrivalEntity);
+    List<HopArrivalEntity> hopArrivalListToHopArrivalEntityList (List<HopArrival> hopArrivalEntity);
 
     Recipient recipientEntityToRecipient (RecipientEntity recipientEntity);
     RecipientEntity recipientToRecipientEntity (Recipient recipient);
 
+    HopArrivalEntity hopArrivalToHopArrivalEntity (HopArrival hopArrival);
+    HopArrival hopArrivalToHopArrivalEntity (HopArrivalEntity hopArrivalEntity);
 }

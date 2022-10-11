@@ -1,20 +1,30 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.services.dto.NewParcelInfo;
-import at.fhtw.swen3.services.dto.Parcel;
-import at.fhtw.swen3.services.dto.TrackingInformation;
+import at.fhtw.swen3.persistence.entity.HopArrivalEntity;
+import at.fhtw.swen3.persistence.entity.RecipientEntity;
+import at.fhtw.swen3.services.dto.*;
 import at.fhtw.swen3.persistence.entity.ParcelEntity;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component
 @org.mapstruct.Mapper
 public interface Mapper {
 
-    TrackingInformation eParcelToTrackingInformation (ParcelEntity parcelEntity);
-    ParcelEntity trackingInformationToEParcel (TrackingInformation trackingInformation);
+    TrackingInformation ParcelEntityToTrackingInformation (ParcelEntity parcelEntity);
+    ParcelEntity trackingInformationToParcelEntity (TrackingInformation trackingInformation);
 
-    NewParcelInfo eParcelToNewParcelInfo (ParcelEntity parcelEntity);
-    ParcelEntity newParcelInfoToEParcel (NewParcelInfo newParcelInfo);
+    NewParcelInfo ParcelEntityToNewParcelInfo (ParcelEntity parcelEntity);
+    ParcelEntity newParcelInfoToParcelEntity (NewParcelInfo newParcelInfo);
 
-    Parcel eParcelToParcel (ParcelEntity parcelEntity);
-    ParcelEntity parcelToEParcel (Parcel parcel);
+    Parcel ParcelEntityToParcel (ParcelEntity parcelEntity);
+    ParcelEntity parcelToParcelEntity (Parcel parcel);
+
+    List<HopArrival> hopArrivalEntityToHopArrival (List<HopArrivalEntity> hopArrivalEntity);
+    List<HopArrivalEntity> hopArrivalToHopArrivalEntity (List<HopArrival> hopArrivalEntity);
+
+    Recipient recipientEntityToRecipient (RecipientEntity recipientEntity);
+    RecipientEntity recipientToRecipientEntity (Recipient recipient);
 
 }

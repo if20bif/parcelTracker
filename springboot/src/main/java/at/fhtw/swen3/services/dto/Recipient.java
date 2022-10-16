@@ -29,7 +29,7 @@ public class Recipient {
   private String name;
 
   @JsonProperty("street")
-  @Pattern(regexp = "[A-Zßa-z]+ [0-9]+[0-9a-z/]+")
+  @Pattern(regexp = "[A-Zßa-z]+ [0-9]+[0-9a-z/]*")
   private String street;
 
   @JsonProperty("postalCode")

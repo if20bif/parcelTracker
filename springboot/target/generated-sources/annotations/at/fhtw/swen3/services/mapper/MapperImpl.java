@@ -14,13 +14,13 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-11T16:37:34+0200",
-    comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
+    date = "2022-10-16T20:29:07+0200",
+    comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.4.1 (Amazon.com Inc.)"
 )
 public class MapperImpl implements Mapper {
 
     @Override
-    public TrackingInformation ParcelEntityToTrackingInformation(ParcelEntity parcelEntity) {
+    public TrackingInformation parcelEntityToTrackingInformation(ParcelEntity parcelEntity) {
         if ( parcelEntity == null ) {
             return null;
         }
@@ -42,7 +42,7 @@ public class MapperImpl implements Mapper {
     }
 
     @Override
-    public NewParcelInfo ParcelEntityToNewParcelInfo(ParcelEntity parcelEntity) {
+    public NewParcelInfo parcelEntityToNewParcelInfo(ParcelEntity parcelEntity) {
         if ( parcelEntity == null ) {
             return null;
         }
@@ -64,7 +64,7 @@ public class MapperImpl implements Mapper {
     }
 
     @Override
-    public Parcel ParcelEntityToParcel(ParcelEntity parcelEntity) {
+    public Parcel parcelEntityToParcel(ParcelEntity parcelEntity) {
         if ( parcelEntity == null ) {
             return null;
         }
@@ -83,34 +83,6 @@ public class MapperImpl implements Mapper {
         ParcelEntity parcelEntity = new ParcelEntity();
 
         return parcelEntity;
-    }
-
-    @Override
-    public List<HopArrival> hopArrivalEntityListToHopArrivalList(List<HopArrivalEntity> hopArrivalEntity) {
-        if ( hopArrivalEntity == null ) {
-            return null;
-        }
-
-        List<HopArrival> list = new ArrayList<HopArrival>( hopArrivalEntity.size() );
-        for ( HopArrivalEntity hopArrivalEntity1 : hopArrivalEntity ) {
-            list.add( hopArrivalToHopArrivalEntity( hopArrivalEntity1 ) );
-        }
-
-        return list;
-    }
-
-    @Override
-    public List<HopArrivalEntity> hopArrivalListToHopArrivalEntityList(List<HopArrival> hopArrivalEntity) {
-        if ( hopArrivalEntity == null ) {
-            return null;
-        }
-
-        List<HopArrivalEntity> list = new ArrayList<HopArrivalEntity>( hopArrivalEntity.size() );
-        for ( HopArrival hopArrival : hopArrivalEntity ) {
-            list.add( hopArrivalToHopArrivalEntity( hopArrival ) );
-        }
-
-        return list;
     }
 
     @Override
@@ -147,7 +119,7 @@ public class MapperImpl implements Mapper {
     }
 
     @Override
-    public HopArrival hopArrivalToHopArrivalEntity(HopArrivalEntity hopArrivalEntity) {
+    public HopArrival hopArrivalEntityToHopArrival(HopArrivalEntity hopArrivalEntity) {
         if ( hopArrivalEntity == null ) {
             return null;
         }
@@ -155,5 +127,33 @@ public class MapperImpl implements Mapper {
         HopArrival hopArrival = new HopArrival();
 
         return hopArrival;
+    }
+
+    @Override
+    public List<HopArrival> hopArrivalEntityListToHopArrivalList(List<HopArrivalEntity> hopArrivalEntityList) {
+        if ( hopArrivalEntityList == null ) {
+            return null;
+        }
+
+        List<HopArrival> list = new ArrayList<HopArrival>( hopArrivalEntityList.size() );
+        for ( HopArrivalEntity hopArrivalEntity : hopArrivalEntityList ) {
+            list.add( hopArrivalEntityToHopArrival( hopArrivalEntity ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<HopArrivalEntity> hopArrivalListToHopArrivalEntityList(List<HopArrival> hopArrivalEntity) {
+        if ( hopArrivalEntity == null ) {
+            return null;
+        }
+
+        List<HopArrivalEntity> list = new ArrayList<HopArrivalEntity>( hopArrivalEntity.size() );
+        for ( HopArrival hopArrival : hopArrivalEntity ) {
+            list.add( hopArrivalToHopArrivalEntity( hopArrival ) );
+        }
+
+        return list;
     }
 }

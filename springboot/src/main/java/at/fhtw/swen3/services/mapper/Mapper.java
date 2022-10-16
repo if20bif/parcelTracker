@@ -12,21 +12,22 @@ import java.util.List;
 @org.mapstruct.Mapper
 public interface Mapper {
 
-    TrackingInformation ParcelEntityToTrackingInformation (ParcelEntity parcelEntity);
+    TrackingInformation parcelEntityToTrackingInformation (ParcelEntity parcelEntity);
     ParcelEntity trackingInformationToParcelEntity (TrackingInformation trackingInformation);
 
-    NewParcelInfo ParcelEntityToNewParcelInfo (ParcelEntity parcelEntity);
+    NewParcelInfo parcelEntityToNewParcelInfo (ParcelEntity parcelEntity);
     ParcelEntity newParcelInfoToParcelEntity (NewParcelInfo newParcelInfo);
 
-    Parcel ParcelEntityToParcel (ParcelEntity parcelEntity);
+    Parcel parcelEntityToParcel (ParcelEntity parcelEntity);
     ParcelEntity parcelToParcelEntity (Parcel parcel);
-
-    List<HopArrival> hopArrivalEntityListToHopArrivalList (List<HopArrivalEntity> hopArrivalEntity);
-    List<HopArrivalEntity> hopArrivalListToHopArrivalEntityList (List<HopArrival> hopArrivalEntity);
 
     Recipient recipientEntityToRecipient (RecipientEntity recipientEntity);
     RecipientEntity recipientToRecipientEntity (Recipient recipient);
 
     HopArrivalEntity hopArrivalToHopArrivalEntity (HopArrival hopArrival);
-    HopArrival hopArrivalToHopArrivalEntity (HopArrivalEntity hopArrivalEntity);
+    HopArrival hopArrivalEntityToHopArrival (HopArrivalEntity hopArrivalEntity);
+
+    List<HopArrival> hopArrivalEntityListToHopArrivalList(List<HopArrivalEntity> hopArrivalEntityList);
+
+    List<HopArrivalEntity> hopArrivalListToHopArrivalEntityList(List<HopArrival> hopArrivalEntity);
 }

@@ -7,13 +7,14 @@ import at.fhtw.swen3.services.dto.*;
 import lombok.Builder;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class ParcelMapStruct implements Mapper{
 
     @Override
-    public TrackingInformation ParcelEntityToTrackingInformation(ParcelEntity parcelEntity) {
+    public TrackingInformation parcelEntityToTrackingInformation(ParcelEntity parcelEntity) {
         if ( parcelEntity == null ) {
             return null;
         }
@@ -39,7 +40,7 @@ public class ParcelMapStruct implements Mapper{
     }
 
     @Override
-    public NewParcelInfo ParcelEntityToNewParcelInfo(ParcelEntity parcelEntity) {
+    public NewParcelInfo parcelEntityToNewParcelInfo(ParcelEntity parcelEntity) {
         if ( parcelEntity == null ) {
             return null;
         }
@@ -61,7 +62,7 @@ public class ParcelMapStruct implements Mapper{
     }
 
     @Override
-    public Parcel ParcelEntityToParcel(ParcelEntity parcelEntity) {
+    public Parcel parcelEntityToParcel(ParcelEntity parcelEntity) {
         if ( parcelEntity == null ) {
             return null;
         }
@@ -84,16 +85,6 @@ public class ParcelMapStruct implements Mapper{
                 .recipient(recipientToRecipientEntity(parcel.getRecipient()))
                 .sender(recipientToRecipientEntity(parcel.getSender()))
                 .build();
-    }
-
-    @Override
-    public List<HopArrival> hopArrivalEntityListToHopArrivalList(List<HopArrivalEntity> hopArrivalEntity) {
-        return null;
-    }
-
-    @Override
-    public List<HopArrivalEntity> hopArrivalListToHopArrivalEntityList(List<HopArrival> hopArrivalEntity) {
-        return null;
     }
 
     @Override
@@ -128,13 +119,48 @@ public class ParcelMapStruct implements Mapper{
 
     @Override
     public HopArrivalEntity hopArrivalToHopArrivalEntity(HopArrival hopArrival) {
-        return null;
+
+        if(hopArrival == null)
+            return null;
+
+        return HopArrivalEntity.builder()
+                .code(hopArrival.getCode())
+                .description(hopArrival.getDescription())
+                .dateTime(hopArrival.getDateTime())
+                .build();
     }
 
     @Override
-    public HopArrival hopArrivalToHopArrivalEntity(HopArrivalEntity hopArrivalEntity) {
-        return null;
+    public HopArrival hopArrivalEntityToHopArrival(HopArrivalEntity hopArrivalEntity) {
+        if(hopArrivalEntity == null)
+            return null;
+
+        return HopArrival.builder()
+                .code(hopArrivalEntity.getCode())
+                .description(hopArrivalEntity.getDescription())
+                .dateTime(hopArrivalEntity.getDateTime())
+                .build();
     }
 
+    @Override
+    public List<HopArrival> hopArrivalEntityListToHopArrivalList(List<HopArrivalEntity> hopArrivalEntityList){
+        List<HopArrival> hopArrivalList = new ArrayList<>();
 
+        hopArrivalEntityList.forEach(v -> {
+            hopArrivalList.add(hopArrivalEntityToHopArrival(v));
+        });
+
+        return hopArrivalList;
+    }
+
+    @Override
+    public List<HopArrivalEntity> hopArrivalListToHopArrivalEntityList(List<HopArrival> hopArrivalList){
+        List<HopArrivalEntity> hopArrivalEntityList = new ArrayList<>();
+
+        hopArrivalList.forEach(v -> {
+            hopArrivalEntityList.add(hopArrivalToHopArrivalEntity(v));
+        });
+
+        return hopArrivalEntityList;
+    }
 }

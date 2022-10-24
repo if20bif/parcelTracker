@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.locationtech.jts.geom.Point;
 
 
 import javax.annotation.Generated;
@@ -89,7 +90,7 @@ public class Truck extends Hop {
     return this;
   }
 
-  public Truck locationCoordinates(GeoCoordinate locationCoordinates) {
+  public Truck locationCoordinates(Point locationCoordinates) {
     super.setLocationCoordinates(locationCoordinates);
     return this;
   }

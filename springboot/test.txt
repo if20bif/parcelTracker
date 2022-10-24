@@ -1,0 +1,54 @@
+package at.fhtw.swen3.persistence.repository;
+
+import at.fhtw.swen3.persistence.entity.RecipientEntity;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@DataJpaTest
+@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
+class RecipientRepositoryTest {
+    @Autowired
+    RecipientRepository repository;
+
+    @Test
+    void recipientRepositoryTest(){
+
+        RecipientEntity recipientEntity = new RecipientEntity(null, "John Doe", "Kärntnerstraße 1", "1010", "Vienna", "Austria");
+
+        //Create
+        repository.save(recipientEntity);
+
+        assertEquals(1, repository.count());
+
+        //Read
+        List<RecipientEntity> results = repository.findByName("John Doe");
+
+        assertEquals(1, results.size());
+
+        //Update
+
+        recipientEntity = results.get(0);
+
+        recipientEntity.setName("Jane Doe");
+
+        repository.save(recipientEntity);
+
+        results = repository.findByName("Jane Doe");
+
+        assertEquals(1, results.size());
+
+        //Delete
+
+        repository.delete(recipientEntity);
+
+        assertEquals(0, repository.findAll());
+
+    }
+
+}

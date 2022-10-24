@@ -9,6 +9,7 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.locationtech.jts.geom.Point;
 
 
 import javax.annotation.Generated;
@@ -97,7 +98,7 @@ public class Warehouse extends Hop {
     return this;
   }
 
-  public Warehouse locationCoordinates(GeoCoordinate locationCoordinates) {
+  public Warehouse locationCoordinates(Point locationCoordinates) {
     super.setLocationCoordinates(locationCoordinates);
     return this;
   }

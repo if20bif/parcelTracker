@@ -1,45 +1,41 @@
 package at.fhtw.swen3.persistence.entity;
 
-import at.fhtw.swen3.services.dto.HopArrival;
-import at.fhtw.swen3.services.dto.Parcel;
-import at.fhtw.swen3.services.dto.Recipient;
 import at.fhtw.swen3.services.dto.TrackingInformation;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name = "parcel")
 public class ParcelEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    private Long id;
 
     //NewParcelInfo
 
-    @Column
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     private String trackingId;
 
     //Tracking information
 
-    @Column
     private TrackingInformation.StateEnum state;
 
-    @OneToMany(mappedBy = "Parcel")
+    @OneToMany(mappedBy = "parcel")
     private List<HopArrivalEntity> visitedHops = new ArrayList<>();
 
-    @OneToMany(mappedBy = "Parcel")
+    @OneToMany(mappedBy = "parcel")
     private List<HopArrivalEntity> futureHops = new ArrayList<>();
 
     //Parcel
 
-    @Column
     private Float weight;
 
     @OneToOne

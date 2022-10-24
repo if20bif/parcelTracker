@@ -1,4 +1,3 @@
-at\fhtw\swen3\services\mapper\ParcelMapStructTest.class
-at\fhtw\swen3\services\dto\ObjectValidatorTest.class
 at\fhtw\swen3\OpenApiGeneratorApplicationTests.class
-at\fhtw\swen3\ServiceTest.class
+at\fhtw\swen3\services\ObjectValidatorTest.class
+at\fhtw\swen3\services\mapper\ObjectMapperImplTest.class

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.locationtech.jts.geom.Point;
 
 
 import javax.annotation.Generated;
@@ -25,7 +26,7 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "hopType", visible = true)
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = Transferwarehouse.class, name = "transferwarehouse"),
+  @JsonSubTypes.Type(value = TransferWarehouse.class, name = "transferwarehouse"),
   @JsonSubTypes.Type(value = Truck.class, name = "truck"),
   @JsonSubTypes.Type(value = Warehouse.class, name = "warehouse")
 })
@@ -50,7 +51,7 @@ public class Hop {
   private String locationName;
 
   @JsonProperty("locationCoordinates")
-  private GeoCoordinate locationCoordinates;
+  private Point locationCoordinates;
 
   public Hop hopType(String hopType) {
     this.hopType = hopType;
@@ -147,7 +148,7 @@ public class Hop {
     this.locationName = locationName;
   }
 
-  public Hop locationCoordinates(GeoCoordinate locationCoordinates) {
+  public Hop locationCoordinates(Point locationCoordinates) {
     this.locationCoordinates = locationCoordinates;
     return this;
   }
@@ -158,11 +159,11 @@ public class Hop {
   */
   @NotNull @Valid 
   @Schema(name = "locationCoordinates", required = true)
-  public GeoCoordinate getLocationCoordinates() {
+  public Point getLocationCoordinates() {
     return locationCoordinates;
   }
 
-  public void setLocationCoordinates(GeoCoordinate locationCoordinates) {
+  public void setLocationCoordinates(Point locationCoordinates) {
     this.locationCoordinates = locationCoordinates;
   }
 

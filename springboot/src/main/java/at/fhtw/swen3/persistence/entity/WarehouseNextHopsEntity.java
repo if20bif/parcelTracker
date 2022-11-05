@@ -18,7 +18,7 @@ public class WarehouseNextHopsEntity {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     private Long id;
 
-    private Integer traveltimeMins;
+    private Integer travelTimeMinutes;
 
     @OneToOne
     private HopEntity hop;

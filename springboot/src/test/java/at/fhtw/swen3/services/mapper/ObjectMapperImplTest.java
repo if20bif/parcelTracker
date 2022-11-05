@@ -5,8 +5,6 @@ import at.fhtw.swen3.services.dto.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.locationtech.jts.geom.Coordinate;
-import org.locationtech.jts.geom.Point;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -320,12 +318,12 @@ class ObjectMapperImplTest {
     void warehouseNextHopsEntityToWarehouseNextHops(){
         WarehouseNextHopsEntity warehouseNextHopsEntity = new WarehouseNextHopsEntity();
 
-        warehouseNextHopsEntity.setTraveltimeMins(10);
+        warehouseNextHopsEntity.setTravelTimeMinutes(10);
         warehouseNextHopsEntity.setHop(new HopEntity());
 
         WarehouseNextHops warehouseNextHops = map.warehouseNextHopsEntityToWarehouseNextHops(warehouseNextHopsEntity);
 
-        assertEquals(10, warehouseNextHops.getTraveltimeMins());
+        assertEquals(10, warehouseNextHops.getTravelTimeMinutes());
         assertNotNull(warehouseNextHops.getHop());
     }
 
@@ -333,12 +331,12 @@ class ObjectMapperImplTest {
     void warehouseNextHopsToWarehouseNextHopsEntity(){
         WarehouseNextHops warehouseNextHops = new WarehouseNextHops();
 
-        warehouseNextHops.setTraveltimeMins(10);
+        warehouseNextHops.setTravelTimeMinutes(10);
         warehouseNextHops.setHop(new Hop());
 
         WarehouseNextHopsEntity warehouseNextHopsEntity = map.warehouseNextHopsToWarehouseNextHopsEntity(warehouseNextHops);
 
-        assertEquals(10, warehouseNextHopsEntity.getTraveltimeMins());
+        assertEquals(10, warehouseNextHopsEntity.getTravelTimeMinutes());
         assertNotNull(warehouseNextHopsEntity.getHop());
     }
 

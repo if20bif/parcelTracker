@@ -21,13 +21,13 @@ import javax.annotation.Generated;
 public class WarehouseNextHops {
 
   @JsonProperty("traveltimeMins")
-  private Integer traveltimeMins;
+  private Integer travelTimeMinutes;
 
   @JsonProperty("hop")
   private Hop hop;
 
   public WarehouseNextHops traveltimeMins(Integer traveltimeMins) {
-    this.traveltimeMins = traveltimeMins;
+    this.travelTimeMinutes = traveltimeMins;
     return this;
   }
 
@@ -37,12 +37,12 @@ public class WarehouseNextHops {
   */
   @NotNull 
   @Schema(name = "traveltimeMins", required = true)
-  public Integer getTraveltimeMins() {
-    return traveltimeMins;
+  public Integer getTravelTimeMinutes() {
+    return travelTimeMinutes;
   }
 
-  public void setTraveltimeMins(Integer traveltimeMins) {
-    this.traveltimeMins = traveltimeMins;
+  public void setTravelTimeMinutes(Integer travelTimeMinutes) {
+    this.travelTimeMinutes = travelTimeMinutes;
   }
 
   public WarehouseNextHops hop(Hop hop) {
@@ -73,20 +73,20 @@ public class WarehouseNextHops {
       return false;
     }
     WarehouseNextHops warehouseNextHops = (WarehouseNextHops) o;
-    return Objects.equals(this.traveltimeMins, warehouseNextHops.traveltimeMins) &&
+    return Objects.equals(this.travelTimeMinutes, warehouseNextHops.travelTimeMinutes) &&
         Objects.equals(this.hop, warehouseNextHops.hop);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(traveltimeMins, hop);
+    return Objects.hash(travelTimeMinutes, hop);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class WarehouseNextHops {\n");
-    sb.append("    traveltimeMins: ").append(toIndentedString(traveltimeMins)).append("\n");
+    sb.append("    traveltimeMins: ").append(toIndentedString(travelTimeMinutes)).append("\n");
     sb.append("    hop: ").append(toIndentedString(hop)).append("\n");
     sb.append("}");
     return sb.toString();

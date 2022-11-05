@@ -9,6 +9,7 @@ import at.fhtw.swen3.persistence.entity.ParcelEntity.ParcelEntityBuilder;
 import at.fhtw.swen3.persistence.entity.RecipientEntity;
 import at.fhtw.swen3.persistence.entity.RecipientEntity.RecipientEntityBuilder;
 import at.fhtw.swen3.persistence.entity.TransferWarehouseEntity;
+import at.fhtw.swen3.persistence.entity.TransferWarehouseEntity.TransferWarehouseEntityBuilder;
 import at.fhtw.swen3.persistence.entity.TruckEntity;
 import at.fhtw.swen3.persistence.entity.WarehouseEntity;
 import at.fhtw.swen3.persistence.entity.WarehouseNextHopsEntity;
@@ -34,8 +35,8 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-24T15:50:52+0200",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 18.0.1 (Oracle Corporation)"
+    date = "2022-11-05T13:58:04+0100",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class ObjectMapperImpl implements ObjectMapper {
 
@@ -244,13 +245,13 @@ public class ObjectMapperImpl implements ObjectMapper {
             return null;
         }
 
-        TransferWarehouseEntity transferWarehouseEntity = new TransferWarehouseEntity();
+        TransferWarehouseEntityBuilder transferWarehouseEntity = TransferWarehouseEntity.builder();
 
-        transferWarehouseEntity.setRegionGeoJson( transferwarehouse.getRegionGeoJson() );
-        transferWarehouseEntity.setLogisticsPartner( transferwarehouse.getLogisticsPartner() );
-        transferWarehouseEntity.setLogisticsPartnerUrl( transferwarehouse.getLogisticsPartnerUrl() );
+        transferWarehouseEntity.regionGeoJson( transferwarehouse.getRegionGeoJson() );
+        transferWarehouseEntity.logisticsPartner( transferwarehouse.getLogisticsPartner() );
+        transferWarehouseEntity.logisticsPartnerUrl( transferwarehouse.getLogisticsPartnerUrl() );
 
-        return transferWarehouseEntity;
+        return transferWarehouseEntity.build();
     }
 
     @Override
@@ -317,7 +318,7 @@ public class ObjectMapperImpl implements ObjectMapper {
 
         WarehouseNextHops warehouseNextHops = new WarehouseNextHops();
 
-        warehouseNextHops.setTraveltimeMins( warehouseNextHopsEntity.getTraveltimeMins() );
+        warehouseNextHops.setTravelTimeMinutes( warehouseNextHopsEntity.getTravelTimeMinutes() );
         warehouseNextHops.setHop( hopEntityToHop( warehouseNextHopsEntity.getHop() ) );
 
         return warehouseNextHops;
@@ -331,7 +332,7 @@ public class ObjectMapperImpl implements ObjectMapper {
 
         WarehouseNextHopsEntity warehouseNextHopsEntity = new WarehouseNextHopsEntity();
 
-        warehouseNextHopsEntity.setTraveltimeMins( warehouseNextHops.getTraveltimeMins() );
+        warehouseNextHopsEntity.setTravelTimeMinutes( warehouseNextHops.getTravelTimeMinutes() );
         warehouseNextHopsEntity.setHop( hopToHopEntity( warehouseNextHops.getHop() ) );
 
         return warehouseNextHopsEntity;

@@ -1,8 +1,8 @@
 package at.fhtw.swen3.persistence.repository;
 
-import at.fhtw.swen3.persistence.entity.HopEntity;
-import at.fhtw.swen3.persistence.entity.WarehouseEntity;
-import at.fhtw.swen3.persistence.entity.WarehouseNextHopsEntity;
+import at.fhtw.swen3.persistence.entities.HopEntity;
+import at.fhtw.swen3.persistence.entities.WarehouseEntity;
+import at.fhtw.swen3.persistence.entities.WarehouseNextHopsEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;

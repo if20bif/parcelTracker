@@ -1,6 +1,7 @@
 package at.fhtw.swen3.services;
 
 import at.fhtw.swen3.services.dto.*;
+import at.fhtw.swen3.services.validation.ObjectValidator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

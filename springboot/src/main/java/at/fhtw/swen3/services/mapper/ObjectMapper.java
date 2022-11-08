@@ -43,6 +43,5 @@ public interface ObjectMapper {
     HopArrival hopArrivalEntityToHopArrival (HopArrivalEntity hopArrivalEntity);
 
     List<HopArrival> hopArrivalEntityListToHopArrivalList(List<HopArrivalEntity> hopArrivalEntityList);
-
     List<HopArrivalEntity> hopArrivalListToHopArrivalEntityList(List<HopArrival> hopArrivalEntity);
 }

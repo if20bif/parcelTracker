@@ -1,3 +1,12 @@
-C:\Users\valen\IdeaProjects\parcelTracker\springboot\src\test\java\at\fhtw\swen3\services\mapper\ObjectMapperImplTest.java
-C:\Users\valen\IdeaProjects\parcelTracker\springboot\src\test\java\at\fhtw\swen3\OpenApiGeneratorApplicationTests.java
-C:\Users\valen\IdeaProjects\parcelTracker\springboot\src\test\java\at\fhtw\swen3\services\ObjectValidatorTest.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/persistence/repository/HopRepositoryTest.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/services/ObjectValidatorTest.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/services/mapper/ObjectMapperImplTest.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/persistence/repository/GeoCoordinateRepositoryTest.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/persistence/repository/TruckRepositoryTest.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/persistence/repository/RecipientRepositoryTest.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/persistence/repository/WarehouseRepositoryTest.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/persistence/repository/HopArrivalRepositoryTest.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/persistence/repository/WarehouseNextHopsRepositoryTest.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/OpenApiGeneratorApplicationTests.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/persistence/repository/ParcelRepositoryTest.java
+/Users/edinmuhovic/Documents/FH_5.Sem/SWKOMP/parcelTracker/springboot/src/test/java/at/fhtw/swen3/persistence/repository/TransferWarehouseRepositoryTest.java

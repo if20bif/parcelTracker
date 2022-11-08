@@ -30,7 +30,7 @@ public class OpenApiGeneratorApplication {
     @Bean
     CommandLineRunner commandLineRunner(RecipientRepository recipientRepository){
         return args -> {
-            recipientRepository.save(new RecipientEntity(null, "Jane Doe", "Kärntnerstraße 1", "1010", "Vienna", "Austria"));
+            //recipientRepository.save(new RecipientEntity(null, "Jane Doe", "Kärntnerstraße 1", "1010", "Vienna", "Austria"));
         };
     }
 

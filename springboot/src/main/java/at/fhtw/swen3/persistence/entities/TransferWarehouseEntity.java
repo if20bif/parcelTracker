@@ -1,4 +1,4 @@
-package at.fhtw.swen3.persistence.entity;
+package at.fhtw.swen3.persistence.entities;
 
 import lombok.*;
 
@@ -13,6 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "transfer_warehouse")
+//Hier validieren
 public class TransferWarehouseEntity {
 
     @Id

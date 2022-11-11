@@ -1,6 +1,5 @@
 package at.fhtw.swen3;
 
-import at.fhtw.swen3.persistence.entity.RecipientEntity;
 import at.fhtw.swen3.persistence.repository.RecipientRepository;
 import com.fasterxml.jackson.databind.Module;
 import org.openapitools.jackson.nullable.JsonNullableModule;

@@ -27,15 +27,12 @@ import javax.annotation.Generated;
 public class Parcel {
 
   @JsonProperty("weight")
-  @Min(0)
   private Float weight;
 
   @JsonProperty("recipient")
-  @NotNull
   private Recipient recipient;
 
   @JsonProperty("sender")
-  @NotNull
   private Recipient sender;
 
   public Parcel weight(Float weight) {

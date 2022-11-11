@@ -157,7 +157,7 @@ public class Hop {
    * Get locationCoordinates
    * @return locationCoordinates
   */
-  @NotNull @Valid 
+  @NotNull @Valid
   @Schema(name = "locationCoordinates", required = true)
   public Point getLocationCoordinates() {
     return locationCoordinates;

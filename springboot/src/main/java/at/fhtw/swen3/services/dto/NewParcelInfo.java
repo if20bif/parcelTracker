@@ -4,7 +4,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,7 +24,6 @@ import javax.annotation.Generated;
 public class NewParcelInfo {
 
   @JsonProperty("trackingId")
-  @Pattern(regexp = "^[A-Z0-9]{9}$")
   private String trackingId;
 
   public NewParcelInfo trackingId(String trackingId) {
@@ -37,7 +35,7 @@ public class NewParcelInfo {
    * The tracking ID of the parcel. 
    * @return trackingId
   */
-  @Pattern(regexp = "^[A-Z0-9]{9}$") 
+
   @Schema(name = "trackingId", example = "PYJRB4HZ6", description = "The tracking ID of the parcel. ", required = false)
   public String getTrackingId() {
     return trackingId;

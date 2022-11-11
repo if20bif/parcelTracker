@@ -1,5 +1,8 @@
 package at.fhtw.swen3.services;
 
+import at.fhtw.swen3.persistence.entities.HopArrivalEntity;
+import at.fhtw.swen3.persistence.entities.ParcelEntity;
+import at.fhtw.swen3.persistence.entities.RecipientEntity;
 import at.fhtw.swen3.services.dto.*;
 import at.fhtw.swen3.services.validation.ObjectValidator;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,99 +20,69 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ObjectValidatorTest {
 
-    Recipient validRecipient;
-    Recipient invalidRecipient;
+    RecipientEntity validRecipientEntity;
+    RecipientEntity invalidRecipientEntity;
 
-    Parcel validParcel;
-    Parcel invalidParcel;
+    ParcelEntity validParcelEntity;
+    ParcelEntity invalidParcelEntity;
 
-    NewParcelInfo validNewParcelInfo;
-    NewParcelInfo invalidNewParcelInfo;
+    NewParcelInfo validNewParcelInfoEntity;
+    NewParcelInfo invalidNewParcelInfoEntity;
 
-    TrackingInformation validTrackingInformation;
-    TrackingInformation invalidTrackingInformation;
+    TrackingInformation validTrackingInformationEntity;
+    TrackingInformation invalidTrackingInformationEntity;
 
-    HopArrival validHopArrival;
-    HopArrival invalidHopArrival;
+    HopArrivalEntity validHopArrivalEntity;
+    HopArrivalEntity invalidHopArrivalEntity;
 
     Exception exception;
     List<String> expectedOutput;
 
     @BeforeAll
     void setup(){
-        validRecipient = new Recipient("John Doe", "Hoechstaedtplatz 6", "A-1200", "Vienna", "Austria");
-        invalidRecipient = new Recipient("jane doe", "Kärtner Straße", "1234", "linz", null);
+        validRecipientEntity = new RecipientEntity(null, "John Doe", "Hoechstaedtplatz 6", "A-1200", "Vienna", "Austria");
+        invalidRecipientEntity = new RecipientEntity(null,"jane doe", "Kärtner Straße", "1234", "linz", null);
 
-        validParcel = new Parcel(1.0f, validRecipient, validRecipient);
-        invalidParcel = new Parcel(-1.0f, null, null);
+        validParcelEntity = new ParcelEntity(null, "123456789", TrackingInformation.StateEnum.DELIVERED, new ArrayList<>(), new ArrayList<>(), 1.0f, validRecipientEntity, validRecipientEntity);
+        invalidParcelEntity = new ParcelEntity(null, "123", null, new ArrayList<>(), new ArrayList<>(), -1.0f, null, null);
 
-        validNewParcelInfo = new NewParcelInfo("123456789");
-        invalidNewParcelInfo = new NewParcelInfo("123");
-
-        validTrackingInformation = new TrackingInformation(TrackingInformation.StateEnum.TRANSFERRED, new ArrayList<>(), new ArrayList<>());
-        invalidTrackingInformation = new TrackingInformation();
-
-        validHopArrival = new HopArrival("TEST1234", "Warehouse 12-27", OffsetDateTime.now());
-        invalidHopArrival = new HopArrival("TEST12345", "Warehouse 12/27", null);
+        validHopArrivalEntity = new HopArrivalEntity(null, "TEST1234", "Warehouse 12-27", OffsetDateTime.now(), validParcelEntity);
+        invalidHopArrivalEntity = new HopArrivalEntity(null, "TEST12345", "Warehouse 12/27", null, invalidParcelEntity);
     }
 
     @Test
-    void validateRecipient(){
+    void validateRecipientEntity(){
 
         //Valid
-        ObjectValidator.getInstance().validate(validRecipient);
+        ObjectValidator.getInstance().validate(validRecipientEntity);
 
         //Invalid
         exception = assertThrows(ConstraintViolationException.class, () -> {
-            ObjectValidator.getInstance().validate(invalidRecipient);
+            ObjectValidator.getInstance().validate(invalidRecipientEntity);
         });
     }
 
     @Test
-    void validateParcel(){
+    void validateParcelEntity(){
 
         //Parcel valid
-        ObjectValidator.getInstance().validate(validParcel);
+        ObjectValidator.getInstance().validate(validParcelEntity);
 
         //Parcel invalid
         exception = assertThrows(ConstraintViolationException.class, () -> {
-            ObjectValidator.getInstance().validate(invalidParcel);
+            ObjectValidator.getInstance().validate(invalidParcelEntity);
         });
     }
 
     @Test
-    void validateNewParcelInfo(){
-
-        //NewParcelInfo valid
-        ObjectValidator.getInstance().validate(validNewParcelInfo);
-
-        //NewParcelInfo invalid
-        exception = assertThrows(ConstraintViolationException.class, () -> {
-            ObjectValidator.getInstance().validate(invalidNewParcelInfo);
-        });
-    }
-
-    @Test
-    void validateTrackingInformation(){
-
-        //TrackingInformation valid
-        ObjectValidator.getInstance().validate(validTrackingInformation);
-
-        //TrackingInformation invalid
-        exception = assertThrows(ConstraintViolationException.class, () -> {
-            ObjectValidator.getInstance().validate(invalidTrackingInformation);
-        });
-    }
-
-    @Test
-    void validateHopArrival(){
+    void validateHopArrivalEntity(){
 
         //HopArrival valid
-        ObjectValidator.getInstance().validate(validHopArrival);
+        ObjectValidator.getInstance().validate(validHopArrivalEntity);
 
         //HopArrival invalid
         exception = assertThrows(ConstraintViolationException.class, () -> {
-            ObjectValidator.getInstance().validate(invalidHopArrival);
+            ObjectValidator.getInstance().validate(invalidHopArrivalEntity);
         });
     }
 }

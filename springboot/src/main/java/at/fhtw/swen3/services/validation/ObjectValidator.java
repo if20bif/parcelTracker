@@ -25,10 +25,12 @@ public class ObjectValidator {
     }
 
     public <T> void validate(T t){
+        log.info("Validating " + t);
         Set<ConstraintViolation<T>> violations = validator.validate(t);
         violations.forEach(v -> log.error(v.getMessage()));
 
         if(!violations.isEmpty()){
+            log.error("Validation error: " + violations);
             throw new ConstraintViolationException(violations);
         }
     }

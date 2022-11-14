@@ -1,5 +1,6 @@
 package at.fhtw.swen3.persistence.entities;
 
+import at.fhtw.swen3.services.dto.Hop;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -13,7 +14,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "transfer_warehouse")
-//Hier validieren
 public class TransferWarehouseEntity {
 
     @Id

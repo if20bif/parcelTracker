@@ -20,7 +20,7 @@ class WarehouseRepositoryTest {
 
     @Test
     void warehouseRepositoryTest(){
-        WarehouseEntity warehouseEntity = new WarehouseEntity(null, 200, new ArrayList<>());
+        WarehouseEntity warehouseEntity = new WarehouseEntity(null, 200, null, new ArrayList<>());
 
         //Save
         repository.save(warehouseEntity);

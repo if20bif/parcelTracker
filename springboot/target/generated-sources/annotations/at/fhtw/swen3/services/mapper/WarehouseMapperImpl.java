@@ -12,7 +12,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-11T18:05:23+0100",
+    date = "2022-11-14T19:34:44+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 18.0.1 (Oracle Corporation)"
 )
 public class WarehouseMapperImpl implements WarehouseMapper {
@@ -25,6 +25,7 @@ public class WarehouseMapperImpl implements WarehouseMapper {
 
         Warehouse warehouse = new Warehouse();
 
+        warehouse.code( warehouseEntity.getCode() );
         warehouse.setLevel( warehouseEntity.getLevel() );
         warehouse.setNextHops( warehouseNextHopsEntityListToWarehouseNextHopsList( warehouseEntity.getNextHops() ) );
 
@@ -40,6 +41,7 @@ public class WarehouseMapperImpl implements WarehouseMapper {
         WarehouseEntity warehouseEntity = new WarehouseEntity();
 
         warehouseEntity.setLevel( warehouse.getLevel() );
+        warehouseEntity.setCode( warehouse.getCode() );
         warehouseEntity.setNextHops( warehouseNextHopsListToWarehouseNextHopsEntityList( warehouse.getNextHops() ) );
 
         return warehouseEntity;

@@ -1,2 +1,2 @@
 # parcelTracker
-# gitlab > github
+# gitlab >> github

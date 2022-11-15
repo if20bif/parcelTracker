@@ -1,5 +1,6 @@
 package at.fhtw.swen3.persistence.entities;
 
+import at.fhtw.swen3.services.dto.Hop;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,9 @@ public class WarehouseEntity {
     private Long id;
 
     private Integer level;
+
+    //TODO
+    private String code;
 
     @OneToMany(mappedBy = "warehouse")
     private List<WarehouseNextHopsEntity> nextHops = new ArrayList<>();

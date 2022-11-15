@@ -10,11 +10,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
 @Service
-public class WarehouseServiceImpl {
+public class WarehouseServiceImpl implements WarehouseService {
     private final WarehouseRepository repository;
     private WarehouseMapperImpl mapper;
 
@@ -30,4 +33,32 @@ public class WarehouseServiceImpl {
             return;
         }
     }
+
+    @Override
+    public List<Warehouse> getWarehouses(){
+
+        List<Warehouse> list = new ArrayList<>();
+
+        repository.findAll().forEach(e -> list.add(mapper.warehouseEntityToWarehouse(e)));
+
+        return list;
+    }
+
+    @Override
+    public Optional<Warehouse> getWarehouseByCode (String code){
+
+        List<WarehouseEntity> result = repository.findByCode(code);
+
+        if(result.isEmpty())
+            return Optional.empty();
+
+        return Optional.of(mapper.warehouseEntityToWarehouse(result.get(0)));
+    }
+
+    @Override
+    public void saveWarehouse(Warehouse warehouse){
+        repository.save(mapper.warehouseToWarehouseEntity(warehouse));
+    }
+
+
 }

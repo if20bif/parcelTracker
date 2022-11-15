@@ -33,7 +33,7 @@ class WarehouseNextHopsRepositoryTest {
 
         hopRepository.save(hopEntity);
 
-        WarehouseEntity warehouseEntity = new WarehouseEntity(null, 200, new ArrayList<>());
+        WarehouseEntity warehouseEntity = new WarehouseEntity(null, 200, null, new ArrayList<>());
 
         warehouseRepository.save(warehouseEntity);
 

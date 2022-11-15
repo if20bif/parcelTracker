@@ -105,7 +105,7 @@ public interface WarehouseApi {
         value = "/warehouse/{code}",
         produces = { "application/json" }
     )
-    default ResponseEntity<Hop> getWarehouse(
+    default ResponseEntity<Warehouse> getWarehouse(
         @Parameter(name = "code", description = "", required = true) @PathVariable("code") String code
     ) {
         getRequest().ifPresent(request -> {
@@ -117,6 +117,8 @@ public interface WarehouseApi {
                 }
             }
         });
+
+
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

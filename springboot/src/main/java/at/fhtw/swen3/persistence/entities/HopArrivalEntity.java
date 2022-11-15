@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.time.OffsetDateTime;
 
 @Data
@@ -19,8 +20,10 @@ public class HopArrivalEntity {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     private Long id;
 
+    @Pattern(regexp = "^[A-Z]{4}\\d{1,4}$")
     private String code;
 
+    @Pattern(regexp = "[A-Za-z0-9- ]+")
     private String description;
 
     private OffsetDateTime dateTime;

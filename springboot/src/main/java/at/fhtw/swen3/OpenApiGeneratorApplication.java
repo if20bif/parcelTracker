@@ -1,6 +1,6 @@
 package at.fhtw.swen3;
 
-import at.fhtw.swen3.persistence.repository.RecipientRepository;
+import at.fhtw.swen3.persistence.repositories.RecipientRepository;
 import com.fasterxml.jackson.databind.Module;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 import org.springframework.boot.CommandLineRunner;
@@ -12,9 +12,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"at.fhtw.swen3", "at.fhtw.swen3.services" , "at.fhtw.swen3.configuration"})
-@EnableJpaRepositories(basePackages = "at.fhtw.swen3.persistence.repository")
-@EntityScan(basePackages = "at.fhtw.swen3.persistence.entity")
+@ComponentScan(basePackages = {"at.fhtw.swen3", "at.fhtw.swen3.services" , "at.fhtw.swen3.configuration", "at.fhtw.swen3.controller.rest"})
+@EnableJpaRepositories(basePackages = "at.fhtw.swen3.persistence.repositories")
+@EntityScan(basePackages = "at.fhtw.swen3.persistence.entities")
 public class OpenApiGeneratorApplication {
 
     public static void main(String[] args) {

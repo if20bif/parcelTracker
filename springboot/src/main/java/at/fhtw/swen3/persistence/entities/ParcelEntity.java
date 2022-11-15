@@ -4,6 +4,9 @@ import at.fhtw.swen3.services.dto.TrackingInformation;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,7 @@ public class ParcelEntity {
 
     //NewParcelInfo
 
+    @Pattern(regexp = "^[A-Z0-9]{9}$")
     private String trackingId;
 
     //Tracking information
@@ -36,12 +40,15 @@ public class ParcelEntity {
 
     //Parcel
 
+    @Min(0)
     private Float weight;
 
+    @NotNull
     @OneToOne
     @JoinColumn(name = "fk_recipient")
     private RecipientEntity recipient;
 
+    @NotNull
     @OneToOne
     @JoinColumn(name = "fk_sender")
     private RecipientEntity sender;

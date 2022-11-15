@@ -26,7 +26,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file springboot/pom.xml
+      run: mvn -B package --file springboot/pom.xml -Dmaven.test.skip=true
       
     - name: Upload JAR
         #This uploads artifacts from your workflow allowing you to share data between jobs and store data once a workflow is complete.
@@ -59,7 +59,7 @@ jobs:
           aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
           use_existing_version_if_available: true
           application_name: springboot-deploy
-          environment_name: Springbootdeploy-env
+          environment_name: Springbootdeploy-env-1
           version_label: ${{github.SHA}}
           region: us-east-1
           deployment_package: openapi-spring-1.22.1.jar

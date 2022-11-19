@@ -1,6 +1,6 @@
 package at.fhtw.swen3.persistence.repositories;
 
-import at.fhtw.swen3.persistence.entities.TransferWarehouseEntity;
+import at.fhtw.swen3.persistence.entities.TransferwarehouseEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,21 +12,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
-class TransferWarehouseRepositoryTest {
+class TransferwarehouseRepositoryTest {
 
     @Autowired
-    TransferWarehouseRepository repository;
+    TransferwarehouseRepository repository;
 
     @Test
     void transferWarehouseRepositoryTest(){
-        TransferWarehouseEntity transferWarehouseEntity = new TransferWarehouseEntity(null, "{\"x\": 20.152, \"y\": 561.215}", "ABC AG", "www.abcAG.com");
+        TransferwarehouseEntity transferWarehouseEntity = new TransferwarehouseEntity(null, "{\"x\": 20.152, \"y\": 561.215}", "ABC AG", "www.abcAG.com");
 
         //Create
         repository.save(transferWarehouseEntity);
         assertEquals(1, repository.count());
 
         //Read
-        List<TransferWarehouseEntity> results = repository.findByLogisticsPartner("ABC AG");
+        List<TransferwarehouseEntity> results = repository.findByLogisticsPartner("ABC AG");
         assertEquals(1, results.size());
 
         //Update

@@ -1,6 +1,7 @@
 package at.fhtw.swen3;
 
 import at.fhtw.swen3.persistence.repositories.RecipientRepository;
+import at.fhtw.swen3.service.impl.OSMEncodingProxy;
 import com.fasterxml.jackson.databind.Module;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 import org.springframework.boot.CommandLineRunner;
@@ -27,9 +28,10 @@ public class OpenApiGeneratorApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(RecipientRepository recipientRepository){
+    CommandLineRunner commandLineRunner(/*RecipientRepository recipientRepository*//*OSMEncodingProxy osmEncodingProxy*/){
         return args -> {
             //recipientRepository.save(new RecipientEntity(null, "Jane Doe", "Kärntnerstraße 1", "1010", "Vienna", "Austria"));
+            //osmEncodingProxy.decodeAddress()
         };
     }
 

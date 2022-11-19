@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class TransferwarehouseMapperTest {
 
-    private TransferWarehouseMapperImpl mapper;
+    private TransferwarehouseMapperImpl mapper;
 
     @BeforeAll
     public void setup(){
-        mapper = new TransferWarehouseMapperImpl();
+        mapper = new TransferwarehouseMapperImpl();
     }
 
     @Test

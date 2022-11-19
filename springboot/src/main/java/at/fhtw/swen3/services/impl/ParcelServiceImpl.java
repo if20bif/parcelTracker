@@ -44,13 +44,15 @@ public class ParcelServiceImpl implements ParcelService {
     public Optional<Parcel> updateStatus(String trackingId, TrackingInformation.StateEnum state){
         List<ParcelEntity> list = repository.findByTrackingId(trackingId);
 
-        if(list.isEmpty())
+        if(list.isEmpty()){
+            log.warn("Status list is empty!");
             return Optional.empty();
+        }
 
         ParcelEntity parcelEntity = list.get(0);
         parcelEntity.setState(state);
-
         repository.save(parcelEntity);
+        log.info("Status updated");
 
         return Optional.of(mapper.parcelEntityToParcel(parcelEntity));
     }

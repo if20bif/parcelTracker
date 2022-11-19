@@ -1,13 +1,11 @@
 package at.fhtw.swen3.controller.rest;
 
 
-import at.fhtw.swen3.controller.rest.ParcelApi;
 import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
 import at.fhtw.swen3.services.dto.TrackingInformation;
 import at.fhtw.swen3.services.impl.ParcelService;
-import at.fhtw.swen3.services.impl.ParcelServiceImpl;
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +18,7 @@ import javax.validation.ConstraintViolationException;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-19T12:14:49.172303Z[Etc/UTC]")
 @Controller
+@Slf4j
 public class ParcelApiController implements ParcelApi {
 
     @Autowired
@@ -40,6 +39,7 @@ public class ParcelApiController implements ParcelApi {
 
     @Override
     public ResponseEntity<Void> reportParcelDelivery(String trackingId){
+        log.info("reportParcelDelivery called.");
 
         if(parcelService.updateStatus(trackingId, TrackingInformation.StateEnum.DELIVERED).isPresent())
             return new ResponseEntity<>(HttpStatus.OK);
@@ -49,6 +49,8 @@ public class ParcelApiController implements ParcelApi {
 
     @Override
     public ResponseEntity<Void> reportParcelHop(String trackingId, String code){
+        log.info("reportParcelHop called.");
+
         parcelService.reportParcelHop();
 
         return new ResponseEntity<>(HttpStatus.OK);
@@ -56,6 +58,7 @@ public class ParcelApiController implements ParcelApi {
 
     @Override
     public ResponseEntity<NewParcelInfo> submitParcel(Parcel parcel){
+        log.info("submitParcel called.");
 
         try{
             Optional<NewParcelInfo> result = parcelService.createParcel(parcel);
@@ -71,6 +74,8 @@ public class ParcelApiController implements ParcelApi {
 
     @Override
     public ResponseEntity<TrackingInformation> trackParcel(String trackingId){
+        log.info("trackParcel called.");
+
         Optional<TrackingInformation> result = parcelService.getTrackingInformation(trackingId);
 
         if(result.isPresent())
@@ -81,6 +86,8 @@ public class ParcelApiController implements ParcelApi {
 
     @Override
     public ResponseEntity<NewParcelInfo> transitionParcel(String trackingId, Parcel parcel) {
+        log.info("transtionParcel called.");
+
         parcelService.transitionParcel(parcel);
 
         return new ResponseEntity<>(HttpStatus.OK);

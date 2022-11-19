@@ -8,6 +8,8 @@ import at.fhtw.swen3.services.impl.ParcelService;
 import at.fhtw.swen3.services.impl.ParcelServiceImpl;
 import at.fhtw.swen3.services.impl.WarehouseService;
 import at.fhtw.swen3.services.impl.WarehouseServiceImpl;
+import at.fhtw.swen3.services.mapper.ParcelMapper;
+import at.fhtw.swen3.services.mapper.ParcelMapperImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.request.NativeWebRequest;

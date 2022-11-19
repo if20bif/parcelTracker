@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entities.TransferWarehouseEntity;
-import at.fhtw.swen3.services.dto.TransferWarehouse;
+import at.fhtw.swen3.persistence.entities.TransferwarehouseEntity;
+import at.fhtw.swen3.services.dto.Transferwarehouse;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -9,24 +9,24 @@ import org.junit.jupiter.api.TestInstance;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class TransferWarehouseMapperTest {
+class TransferwarehouseMapperTest {
 
-    private TransferWarehouseMapperImpl mapper;
+    private TransferwarehouseMapperImpl mapper;
 
     @BeforeAll
     public void setup(){
-        mapper = new TransferWarehouseMapperImpl();
+        mapper = new TransferwarehouseMapperImpl();
     }
 
     @Test
     void transferWarehouseEntityToTransferWarehouse() {
-        TransferWarehouseEntity transferWarehouseEntity = new TransferWarehouseEntity();
+        TransferwarehouseEntity transferWarehouseEntity = new TransferwarehouseEntity();
 
         transferWarehouseEntity.setLogisticsPartnerUrl("URL");
         transferWarehouseEntity.setRegionGeoJson("REGION");
         transferWarehouseEntity.setLogisticsPartner("PARTNER");
 
-        TransferWarehouse transferWarehouse = mapper.transferWarehouseEntityToTransferWarehouse(transferWarehouseEntity);
+        Transferwarehouse transferWarehouse = mapper.transferWarehouseEntityToTransferWarehouse(transferWarehouseEntity);
 
         assertTrue(transferWarehouse.getLogisticsPartnerUrl().equals("URL"));
         assertTrue(transferWarehouse.getRegionGeoJson().equals("REGION"));
@@ -35,13 +35,13 @@ class TransferWarehouseMapperTest {
 
     @Test
     void transferWarehouseToTransferWarehouseEntity() {
-        TransferWarehouse transferWarehouse = new TransferWarehouse();
+        Transferwarehouse transferWarehouse = new Transferwarehouse();
 
         transferWarehouse.setLogisticsPartnerUrl("URL");
         transferWarehouse.setRegionGeoJson("REGION");
         transferWarehouse.setLogisticsPartner("PARTNER");
 
-        TransferWarehouseEntity transferWarehouseEntity = mapper.transferWarehouseToTransferWarehouseEntity(transferWarehouse);
+        TransferwarehouseEntity transferWarehouseEntity = mapper.transferWarehouseToTransferWarehouseEntity(transferWarehouse);
 
         assertTrue(transferWarehouseEntity.getLogisticsPartnerUrl().equals("URL"));
         assertTrue(transferWarehouseEntity.getRegionGeoJson().equals("REGION"));

@@ -26,7 +26,7 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "hopType", visible = true)
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = TransferWarehouse.class, name = "transferwarehouse"),
+  @JsonSubTypes.Type(value = Transferwarehouse.class, name = "transferwarehouse"),
   @JsonSubTypes.Type(value = Truck.class, name = "truck"),
   @JsonSubTypes.Type(value = Warehouse.class, name = "warehouse")
 })

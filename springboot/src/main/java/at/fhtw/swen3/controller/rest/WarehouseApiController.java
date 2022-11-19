@@ -7,6 +7,7 @@ import at.fhtw.swen3.services.dto.TrackingInformation;
 import at.fhtw.swen3.services.dto.Warehouse;
 import at.fhtw.swen3.services.impl.WarehouseService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import javax.annotation.Generated;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-19T12:14:49.172303Z[Etc/UTC]")
 @Controller
+@Slf4j
 public class WarehouseApiController implements WarehouseApi {
 
     @Autowired
@@ -38,12 +40,16 @@ public class WarehouseApiController implements WarehouseApi {
 
     @Override
     public ResponseEntity<Warehouse> exportWarehouses(){
+        log.info("exportWarehouses called.");
+
         return new ResponseEntity<>(warehouseService.getWarehouses().get(0), HttpStatus.OK);
     }
 
     //Changed Interface Type to Warehouse
     @Override
     public ResponseEntity<Warehouse> getWarehouse(String code){
+        log.info("getWarehouse called.");
+
         Optional<Warehouse> result = warehouseService.getWarehouseByCode(code);
 
         if(result.isPresent())
@@ -54,6 +60,7 @@ public class WarehouseApiController implements WarehouseApi {
 
     @Override
     public ResponseEntity<Void> importWarehouses(Warehouse warehouse){
+        log.info("importWarehouses called.");
 
         warehouseService.saveWarehouse(warehouse);
 

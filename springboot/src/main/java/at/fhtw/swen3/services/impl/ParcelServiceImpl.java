@@ -20,7 +20,7 @@ import java.util.Optional;
 @Service
 public class ParcelServiceImpl implements ParcelService {
     private final ParcelRepository repository;
-    private ParcelMapperImpl mapper;
+    private ParcelMapperImpl mapper = new ParcelMapperImpl();
 
     //public ParcelServiceImpl(ParcelRepository repo) { repository = repo; }
 
@@ -31,6 +31,7 @@ public class ParcelServiceImpl implements ParcelService {
             ParcelEntity parcelEntity = mapper.parcelToParcelEntity(parcel);
             repository.save(parcelEntity);
         }catch (ConstraintViolationException exception){
+            log.warn("Constraint violation: " + exception);
             return;
         }
     }
@@ -62,6 +63,7 @@ public class ParcelServiceImpl implements ParcelService {
         ParcelEntity parcelEntity = mapper.parcelToParcelEntity(parcel);
         ObjectValidator.getInstance().validate(parcelEntity);
         repository.save(parcelEntity);
+        log.info("Parcel created");
         return Optional.of(mapper.parcelEntityToNewParcelInfo(parcelEntity));
     }
 
@@ -69,8 +71,12 @@ public class ParcelServiceImpl implements ParcelService {
     public Optional<TrackingInformation> getTrackingInformation(String trackingId){
         List<ParcelEntity> list = repository.findByTrackingId(trackingId);
 
-        if(list.isEmpty())
+        if(list.isEmpty()){
+            log.warn("TrackingInformation list is empty!");
             return Optional.empty();
+        }
+
+        log.info("Return TrackingInformation");
 
         return Optional.of(mapper.parcelEntityToTrackingInformation(list.get(0)));
     }

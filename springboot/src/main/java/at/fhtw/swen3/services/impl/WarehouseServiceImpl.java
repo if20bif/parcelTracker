@@ -30,6 +30,7 @@ public class WarehouseServiceImpl implements WarehouseService {
             WarehouseEntity warehouseEntity = mapper.warehouseToWarehouseEntity(warehouse);
             repository.save(warehouseEntity);
         }catch (ConstraintViolationException exception){
+            log.warn("Constraint violation: " + exception);
             return;
         }
     }
@@ -40,6 +41,7 @@ public class WarehouseServiceImpl implements WarehouseService {
         List<Warehouse> list = new ArrayList<>();
 
         repository.findAll().forEach(e -> list.add(mapper.warehouseEntityToWarehouse(e)));
+        log.info("Return list of Warehouses");
 
         return list;
     }
@@ -49,8 +51,12 @@ public class WarehouseServiceImpl implements WarehouseService {
 
         List<WarehouseEntity> result = repository.findByCode(code);
 
-        if(result.isEmpty())
+        if(result.isEmpty()){
+            log.warn("Warehouses by code are empty");
             return Optional.empty();
+        }
+
+        log.info("Return Warehouses by code");
 
         return Optional.of(mapper.warehouseEntityToWarehouse(result.get(0)));
     }

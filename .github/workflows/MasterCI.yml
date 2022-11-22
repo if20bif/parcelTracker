@@ -59,7 +59,7 @@ jobs:
           aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
           use_existing_version_if_available: true
           application_name: springboot-deploy
-          environment_name: Springbootdeploy-env-1
+          environment_name: Springbootdeploy-env
           version_label: ${{github.SHA}}
           region: us-east-1
           deployment_package: openapi-spring-1.22.1.jar

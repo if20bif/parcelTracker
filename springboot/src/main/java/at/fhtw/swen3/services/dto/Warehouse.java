@@ -57,6 +57,16 @@ public class Warehouse extends Hop {
     return this;
   }
 
+  @Override
+  public void setHopType(String hopType) {
+    super.setHopType(hopType);
+  }
+
+  @Override
+  public String getHopType() {
+    return super.getHopType();
+  }
+
   /**
    * Next hops after this warehouse (warehouses or trucks).
    * @return nextHops

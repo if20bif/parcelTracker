@@ -42,7 +42,15 @@ public class WarehouseApiController implements WarehouseApi {
     public ResponseEntity<Warehouse> exportWarehouses(){
         log.info("exportWarehouses called.");
 
-        return new ResponseEntity<>(warehouseService.getWarehouses().get(0), HttpStatus.OK);
+        Optional<List<Warehouse>> result = warehouseService.getWarehouses();
+
+        if(!result.isPresent())
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        if(result.get().isEmpty())
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<>(result.get().get(0), HttpStatus.OK);
     }
 
     //Changed Interface Type to Warehouse

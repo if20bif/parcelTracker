@@ -24,7 +24,7 @@ class HopRepositoryTest {
 
         HopEntity hopEntity = new HopEntity(null, "HopType", "123456789", "Description", 10, "Austria", null);
 
-        WarehouseEntity warehouseEntity = new WarehouseEntity(null, 200, null, new ArrayList<>());
+        WarehouseEntity warehouseEntity = new WarehouseEntity(200, new ArrayList<>());
 
         //Create
         repository.save(hopEntity);

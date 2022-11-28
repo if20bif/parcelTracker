@@ -14,17 +14,10 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "warehouse")
-public class WarehouseEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    private Long id;
+@Entity
+public class WarehouseEntity extends HopEntity {
 
     private Integer level;
-
-    //TODO
-    private String code;
 
     @OneToMany(mappedBy = "warehouse")
     private List<WarehouseNextHopsEntity> nextHops = new ArrayList<>();

@@ -12,12 +12,8 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "truck")
-public class TruckEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    private Long id;
+@Entity
+public class TruckEntity extends HopEntity {
 
     private String regionGeoJson;
 

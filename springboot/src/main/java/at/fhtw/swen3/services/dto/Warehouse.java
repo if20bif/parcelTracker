@@ -22,7 +22,6 @@ import javax.annotation.Generated;
 @JsonTypeName("warehouse")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-19T12:14:49.172303Z[Etc/UTC]")
 public class Warehouse extends Hop {
-
   @JsonProperty("level")
   private Integer level;
 
@@ -56,6 +55,16 @@ public class Warehouse extends Hop {
   public Warehouse addNextHopsItem(WarehouseNextHops nextHopsItem) {
     this.nextHops.add(nextHopsItem);
     return this;
+  }
+
+  @Override
+  public void setHopType(String hopType) {
+    super.setHopType(hopType);
+  }
+
+  @Override
+  public String getHopType() {
+    return super.getHopType();
   }
 
   /**

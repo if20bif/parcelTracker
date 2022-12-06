@@ -44,12 +44,12 @@ public class ParcelEntity {
     private Float weight;
 
     @NotNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fk_recipient")
     private RecipientEntity recipient;
 
     @NotNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fk_sender")
     private RecipientEntity sender;
 }

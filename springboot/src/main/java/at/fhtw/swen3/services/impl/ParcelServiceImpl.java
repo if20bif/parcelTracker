@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateError;
 import org.hibernate.HibernateException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.ConstraintViolationException;
 import java.util.List;
@@ -21,9 +22,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 @Service
+@Transactional
 public class ParcelServiceImpl implements ParcelService {
-    private final ParcelRepository parcelRepository;
-    private final RecipientRepository recipientRepository;
+    private final ParcelRepository repository;
     private ParcelMapperImpl mapper = new ParcelMapperImpl();
 
     //public ParcelServiceImpl(ParcelRepository repo) { repository = repo; }
@@ -33,7 +34,7 @@ public class ParcelServiceImpl implements ParcelService {
             log.info("Submitting new parcel: " + parcel);
             ObjectValidator.getInstance().validate(parcel);
             ParcelEntity parcelEntity = mapper.parcelToParcelEntity(parcel);
-            parcelRepository.save(parcelEntity);
+            repository.save(parcelEntity);
         }catch (ConstraintViolationException exception){
             log.warn("Constraint violation: " + exception);
             return;
@@ -47,7 +48,7 @@ public class ParcelServiceImpl implements ParcelService {
 
     @Override
     public Optional<Parcel> updateStatus(String trackingId, TrackingInformation.StateEnum state){
-        List<ParcelEntity> list = parcelRepository.findByTrackingId(trackingId);
+        List<ParcelEntity> list = repository.findByTrackingId(trackingId);
 
         if(list.isEmpty()){
             log.warn("Status list is empty!");
@@ -56,7 +57,7 @@ public class ParcelServiceImpl implements ParcelService {
 
         ParcelEntity parcelEntity = list.get(0);
         parcelEntity.setState(state);
-        parcelRepository.save(parcelEntity);
+        repository.save(parcelEntity);
         log.info("Status updated");
 
         return Optional.of(mapper.parcelEntityToParcel(parcelEntity));
@@ -78,10 +79,7 @@ public class ParcelServiceImpl implements ParcelService {
             return Optional.empty();
         }
 
-        recipientRepository.save(parcelEntity.getRecipient());
-        recipientRepository.save(parcelEntity.getSender());
-
-        parcelRepository.save(parcelEntity);
+        repository.save(parcelEntity);
 
         log.info("Parcel created");
         return Optional.of(mapper.parcelEntityToNewParcelInfo(parcelEntity));
@@ -89,7 +87,7 @@ public class ParcelServiceImpl implements ParcelService {
 
     @Override
     public Optional<TrackingInformation> getTrackingInformation(String trackingId){
-        List<ParcelEntity> list = parcelRepository.findByTrackingId(trackingId);
+        List<ParcelEntity> list = repository.findByTrackingId(trackingId);
 
         if(list.isEmpty()){
             log.warn("TrackingInformation list is empty!");

@@ -5,6 +5,9 @@ import at.fhtw.swen3.persistence.entities.WarehouseEntity;
 import at.fhtw.swen3.persistence.entities.WarehouseNextHopsEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.Point;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -29,7 +32,11 @@ class WarehouseNextHopsRepositoryTest {
     @Test
     void recipientRepositoryTest(){
 
-        HopEntity hopEntity = new HopEntity(null, "HopType", "123456789", "Description", 10, "Austria", null);
+        GeometryFactory geometryFactory = new GeometryFactory();
+        Coordinate coords = new Coordinate(16.333361758251698, 48.23603769206206);
+        Point point = geometryFactory.createPoint(coords);
+
+        HopEntity hopEntity = new HopEntity(null, "HopType", "123456789", "Description", 10, "Austria", point);
 
         hopRepository.save(hopEntity);
 

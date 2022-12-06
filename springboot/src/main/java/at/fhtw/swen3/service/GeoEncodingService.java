@@ -6,6 +6,6 @@ import org.locationtech.jts.geom.Point;
 import java.io.IOException;
 
 public interface GeoEncodingService {
-    Point encodeAddress(Address a) throws IOException;
-    Address decodeAddress(Point p) throws IOException;
+    Point encodeAddress(String s) throws IOException;
+    String decodeAddress(Point p) throws IOException;
 }

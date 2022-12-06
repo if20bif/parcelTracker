@@ -19,7 +19,7 @@ class TruckRepositoryTest {
 
     @Test
     void truckRepositoryTest(){
-        TruckEntity truckEntity = new TruckEntity("{\"x\": 20.152, \"y\": 561.215}", "W234562");
+        TruckEntity truckEntity = new TruckEntity(null, "{\"x\": 20.152, \"y\": 561.215}", "W234562");
 
         //Create
         repository.save(truckEntity);

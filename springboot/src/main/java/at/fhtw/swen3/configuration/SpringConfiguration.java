@@ -19,8 +19,8 @@ import org.springframework.web.context.request.NativeWebRequest;
 public class SpringConfiguration {
 
     @Bean
-    public ParcelService parcelService(ParcelRepository parcelRepository, RecipientRepository recipientRepository){
-        return new ParcelServiceImpl(parcelRepository, recipientRepository);
+    public ParcelService parcelService(ParcelRepository parcelRepository){
+        return new ParcelServiceImpl(parcelRepository);
     }
 
     @Bean

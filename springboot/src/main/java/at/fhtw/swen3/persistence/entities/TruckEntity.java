@@ -15,6 +15,10 @@ import javax.persistence.Id;
 @Entity
 public class TruckEntity extends HopEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    private Long id;
+
     private String regionGeoJson;
 
     private String numberPlate;

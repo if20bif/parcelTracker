@@ -3,7 +3,6 @@ package at.fhtw.swen3;
 import at.fhtw.swen3.persistence.repositories.RecipientRepository;
 import at.fhtw.swen3.service.impl.OSMEncodingProxy;
 import com.fasterxml.jackson.databind.Module;
-import fr.dudie.nominatim.model.Element;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;

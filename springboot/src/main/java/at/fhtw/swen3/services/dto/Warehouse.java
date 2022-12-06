@@ -22,6 +22,7 @@ import javax.annotation.Generated;
 @JsonTypeName("warehouse")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-19T12:14:49.172303Z[Etc/UTC]")
 public class Warehouse extends Hop {
+
   @JsonProperty("level")
   private Integer level;
 

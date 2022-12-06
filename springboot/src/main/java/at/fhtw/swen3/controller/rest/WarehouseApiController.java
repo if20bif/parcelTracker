@@ -48,8 +48,11 @@ public class WarehouseApiController implements WarehouseApi {
         if(!result.isPresent())
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-        if(result.get().isEmpty())
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if(result.get().isEmpty()){
+            //return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+
 
         return new ResponseEntity<>(result.get().get(0), HttpStatus.OK);
     }
@@ -64,14 +67,15 @@ public class WarehouseApiController implements WarehouseApi {
         if(result.isPresent())
             return new ResponseEntity<>(result.get(), HttpStatus.OK);
 
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        //return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Void> importWarehouses(Warehouse warehouse){
         log.info("importWarehouses called.");
 
-        warehouseService.saveWarehouse(warehouse);
+        //warehouseService.saveWarehouse(warehouse);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

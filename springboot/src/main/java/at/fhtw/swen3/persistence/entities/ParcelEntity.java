@@ -29,15 +29,12 @@ public class ParcelEntity {
     private String trackingId;
 
     //Tracking information
-    @NotNull
     private TrackingInformation.StateEnum state;
 
     @OneToMany(mappedBy = "parcel")
-    @NotNull
     private List<HopArrivalEntity> visitedHops = new ArrayList<>();
 
     @OneToMany(mappedBy = "parcel")
-    @NotNull
     private List<HopArrivalEntity> futureHops = new ArrayList<>();
 
     //Parcel

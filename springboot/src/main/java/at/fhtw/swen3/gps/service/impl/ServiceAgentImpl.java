@@ -1,4 +1,6 @@
 package at.fhtw.swen3.gps.service.impl;
 
-public class ServiceAgentImpl {
+import at.fhtw.swen3.gps.service.GeoEncodingService;
+
+public class ServiceAgentImpl implements GeoEncodingService {
 }

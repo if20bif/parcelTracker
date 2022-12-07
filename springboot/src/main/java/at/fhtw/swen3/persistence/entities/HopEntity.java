@@ -22,7 +22,6 @@ public class HopEntity {
 
     private String hopType;
 
-    @Pattern(regexp = "^[A-Z]{4}\\d{1,4}$")
     private String code;
 
     private String description;

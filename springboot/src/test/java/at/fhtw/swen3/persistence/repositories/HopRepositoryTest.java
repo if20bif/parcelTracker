@@ -4,6 +4,9 @@ import at.fhtw.swen3.persistence.entities.HopEntity;
 import at.fhtw.swen3.persistence.entities.WarehouseEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.Point;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -22,9 +25,13 @@ class HopRepositoryTest {
     @Test
     void hopRepositoryTest(){
 
-        HopEntity hopEntity = new HopEntity(null, "HopType", "123456789", "Description", 10, "Austria", null);
+        GeometryFactory geometryFactory = new GeometryFactory();
+        Coordinate coords = new Coordinate(16.333361758251698, 48.23603769206206);
+        Point point = geometryFactory.createPoint(coords);
 
-        WarehouseEntity warehouseEntity = new WarehouseEntity(null, 200, null, new ArrayList<>());
+        HopEntity hopEntity = new HopEntity(null, "HopType", "123456789", "Description", 10, "Austria", point);
+
+        WarehouseEntity warehouseEntity = new WarehouseEntity(200, new ArrayList<>());
 
         //Create
         repository.save(hopEntity);
@@ -32,6 +39,8 @@ class HopRepositoryTest {
 
         //Read
         List<HopEntity> results = repository.findByCode("123456789");
+        //System.out.println(results.get(0).getLocationCoordinates().getX());
+        //System.out.println(results.get(0).getLocationCoordinates().getY());
         assertEquals(1, results.size());
 
         //Update

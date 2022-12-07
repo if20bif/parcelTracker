@@ -2,6 +2,7 @@ package at.fhtw.swen3.services.impl;
 
 import at.fhtw.swen3.persistence.entities.ParcelEntity;
 import at.fhtw.swen3.persistence.repositories.ParcelRepository;
+import at.fhtw.swen3.persistence.repositories.RecipientRepository;
 import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
 import at.fhtw.swen3.services.dto.TrackingInformation;
@@ -9,7 +10,10 @@ import at.fhtw.swen3.services.mapper.ParcelMapperImpl;
 import at.fhtw.swen3.services.validation.ObjectValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.HibernateError;
+import org.hibernate.HibernateException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.ConstraintViolationException;
 import java.util.List;
@@ -18,6 +22,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 @Service
+@Transactional
 public class ParcelServiceImpl implements ParcelService {
     private final ParcelRepository repository;
     private ParcelMapperImpl mapper = new ParcelMapperImpl();
@@ -59,10 +64,23 @@ public class ParcelServiceImpl implements ParcelService {
     }
 
     @Override
-    public Optional<NewParcelInfo> createParcel(Parcel parcel){
+    public Optional<NewParcelInfo> createParcel(Parcel parcel) throws ConstraintViolationException {
+
         ParcelEntity parcelEntity = mapper.parcelToParcelEntity(parcel);
-        ObjectValidator.getInstance().validate(parcelEntity);
+
+        parcelEntity.setTrackingId("PYJRB4HZ6");
+
+        try{
+            ObjectValidator.getInstance().validate(parcelEntity);
+            ObjectValidator.getInstance().validate(parcelEntity.getRecipient());
+            ObjectValidator.getInstance().validate(parcelEntity.getSender());
+        } catch (HibernateError e) {
+            log.warn("Invalid Parcel");
+            return Optional.empty();
+        }
+
         repository.save(parcelEntity);
+
         log.info("Parcel created");
         return Optional.of(mapper.parcelEntityToNewParcelInfo(parcelEntity));
     }

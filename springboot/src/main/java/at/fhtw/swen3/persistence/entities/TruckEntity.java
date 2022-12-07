@@ -12,8 +12,8 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "truck")
-public class TruckEntity {
+@Entity
+public class TruckEntity extends HopEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

@@ -36,14 +36,14 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
 
     @Override
-    public List<Warehouse> getWarehouses(){
+    public Optional<List<Warehouse>> getWarehouses(){
 
         List<Warehouse> list = new ArrayList<>();
 
         repository.findAll().forEach(e -> list.add(mapper.warehouseEntityToWarehouse(e)));
         log.info("Return list of Warehouses");
 
-        return list;
+        return Optional.of(list);
     }
 
     @Override
@@ -63,7 +63,14 @@ public class WarehouseServiceImpl implements WarehouseService {
 
     @Override
     public void saveWarehouse(Warehouse warehouse){
-        repository.save(mapper.warehouseToWarehouseEntity(warehouse));
+
+        System.out.println(warehouse);
+
+        WarehouseEntity warehouseEntity = mapper.warehouseToWarehouseEntity(warehouse);
+
+        System.out.println(warehouseEntity);
+
+        repository.save(warehouseEntity);
     }
 
 

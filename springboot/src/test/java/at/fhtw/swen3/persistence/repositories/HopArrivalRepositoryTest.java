@@ -33,8 +33,6 @@ class HopArrivalRepositoryTest {
 
         RecipientEntity recipientEntity = new RecipientEntity(null, "John Doe", "Kaerntnerstraße 1", "A-1010", "Vienna", "Austria");
 
-        recipientRepository.save(recipientEntity);
-
         ParcelEntity parcelEntity = new ParcelEntity(null, "123456789", TrackingInformation.StateEnum.DELIVERED, new ArrayList<>(), new ArrayList<>(), 1.0f, recipientEntity, recipientEntity);
 
         parcelRepository.save(parcelEntity);

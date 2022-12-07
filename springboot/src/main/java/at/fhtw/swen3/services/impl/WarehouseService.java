@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface WarehouseService {
 
-    public List<Warehouse> getWarehouses();
+    public Optional<List<Warehouse>> getWarehouses();
 
     public Optional<Warehouse> getWarehouseByCode (String code);
 

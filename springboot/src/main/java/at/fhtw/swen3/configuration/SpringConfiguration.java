@@ -3,6 +3,7 @@ package at.fhtw.swen3.configuration;
 import at.fhtw.swen3.controller.rest.ParcelApiController;
 import at.fhtw.swen3.controller.rest.WarehouseApiController;
 import at.fhtw.swen3.persistence.repositories.ParcelRepository;
+import at.fhtw.swen3.persistence.repositories.RecipientRepository;
 import at.fhtw.swen3.persistence.repositories.WarehouseRepository;
 import at.fhtw.swen3.services.impl.ParcelService;
 import at.fhtw.swen3.services.impl.ParcelServiceImpl;

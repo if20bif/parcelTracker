@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.OffsetDateTime;
 
@@ -26,9 +27,11 @@ public class HopArrivalEntity {
     @Pattern(regexp = "[A-Za-z0-9- ]+")
     private String description;
 
+    @NotNull
     private OffsetDateTime dateTime;
 
     @ManyToOne
+    @NotNull
     @JoinColumn(name = "parcel")
     private ParcelEntity parcel;
 

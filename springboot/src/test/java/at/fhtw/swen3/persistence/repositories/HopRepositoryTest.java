@@ -29,7 +29,7 @@ class HopRepositoryTest {
         Coordinate coords = new Coordinate(16.333361758251698, 48.23603769206206);
         Point point = geometryFactory.createPoint(coords);
 
-        HopEntity hopEntity = new HopEntity(null, "HopType", "123456789", "Description", 10, "Austria", point);
+        HopEntity hopEntity = new HopEntity(null, "HopType", "ACVD1234", "Description", 10, "Austria", point);
 
         WarehouseEntity warehouseEntity = new WarehouseEntity(200, new ArrayList<>());
 
@@ -38,16 +38,16 @@ class HopRepositoryTest {
         assertEquals(1, repository.count());
 
         //Read
-        List<HopEntity> results = repository.findByCode("123456789");
+        List<HopEntity> results = repository.findByCode("ACVD1234");
         //System.out.println(results.get(0).getLocationCoordinates().getX());
         //System.out.println(results.get(0).getLocationCoordinates().getY());
         assertEquals(1, results.size());
 
         //Update
         hopEntity = results.get(0);
-        hopEntity.setCode("987654321");
+        hopEntity.setCode("ACVD1235");
         repository.save(hopEntity);
-        results = repository.findByCode("987654321");
+        results = repository.findByCode("ACVD1235");
 
         assertEquals(1, results.size());
 

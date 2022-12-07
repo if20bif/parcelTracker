@@ -36,7 +36,7 @@ class WarehouseNextHopsRepositoryTest {
         Coordinate coords = new Coordinate(16.333361758251698, 48.23603769206206);
         Point point = geometryFactory.createPoint(coords);
 
-        HopEntity hopEntity = new HopEntity(null, "HopType", "123456789", "Description", 10, "Austria", point);
+        HopEntity hopEntity = new HopEntity(null, "HopType", "ACVD1234", "Description", 10, "Austria", point);
 
         hopRepository.save(hopEntity);
 

@@ -36,7 +36,7 @@ import javax.annotation.Generated;
 public class Hop {
 
   @JsonProperty("hopType")
-  private String hopType;
+  protected String hopType;
 
   @JsonProperty("code")
   private String code;
@@ -62,7 +62,7 @@ public class Hop {
    * Get hopType
    * @return hopType
   */
-  @NotNull 
+  @NotNull
   @Schema(name = "hopType", required = true)
   public String getHopType() {
     return hopType;

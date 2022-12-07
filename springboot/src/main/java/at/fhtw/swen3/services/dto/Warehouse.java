@@ -68,6 +68,7 @@ public class Warehouse extends Hop {
     return super.getHopType();
   }
 
+
   /**
    * Next hops after this warehouse (warehouses or trucks).
    * @return nextHops

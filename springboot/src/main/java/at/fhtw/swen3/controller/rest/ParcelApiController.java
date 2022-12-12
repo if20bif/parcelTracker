@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.request.NativeWebRequest;
 
+import java.io.IOException;
 import java.util.Optional;
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
@@ -68,7 +69,7 @@ public class ParcelApiController implements ParcelApi {
                 return new ResponseEntity<>(result.get(), HttpStatus.CREATED);
 
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        } catch (ConstraintViolationException e){
+        } catch (ConstraintViolationException | IOException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -89,7 +90,11 @@ public class ParcelApiController implements ParcelApi {
     public ResponseEntity<NewParcelInfo> transitionParcel(String trackingId, Parcel parcel) {
         log.info("transtionParcel called.");
 
-        parcelService.transitionParcel(parcel);
+        try {
+            parcelService.transitionParcel(trackingId, parcel);
+        } catch (ConstraintViolationException | IOException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

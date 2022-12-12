@@ -12,5 +12,6 @@ class WarehouseApiControllerTest {
 
     @Test
     void test(){
+        assert(true);
     }
 }

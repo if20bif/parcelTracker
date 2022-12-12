@@ -12,6 +12,7 @@ class ParcelApiControllerTest {
 
     @Test
     void test(){
+        assert(true);
     }
 
 }

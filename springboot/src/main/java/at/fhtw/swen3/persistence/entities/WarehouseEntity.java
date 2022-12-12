@@ -20,6 +20,7 @@ public class WarehouseEntity extends HopEntity {
 
     private Integer level;
 
+    @NotNull
     @OneToMany(mappedBy = "warehouse")
     private List<WarehouseNextHopsEntity> nextHops = new ArrayList<>();
 }

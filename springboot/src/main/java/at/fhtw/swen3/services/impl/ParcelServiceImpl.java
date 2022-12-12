@@ -1,23 +1,28 @@
 package at.fhtw.swen3.services.impl;
 
 import at.fhtw.swen3.persistence.entities.ParcelEntity;
+import at.fhtw.swen3.persistence.entities.RecipientEntity;
 import at.fhtw.swen3.persistence.repositories.ParcelRepository;
-import at.fhtw.swen3.persistence.repositories.RecipientRepository;
+import at.fhtw.swen3.service.impl.OSMEncodingProxy;
 import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
 import at.fhtw.swen3.services.dto.TrackingInformation;
 import at.fhtw.swen3.services.mapper.ParcelMapperImpl;
 import at.fhtw.swen3.services.validation.ObjectValidator;
+import com.mifmif.common.regex.Generex;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateError;
-import org.hibernate.HibernateException;
+import org.locationtech.jts.geom.Point;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.ConstraintViolationException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -64,11 +69,36 @@ public class ParcelServiceImpl implements ParcelService {
     }
 
     @Override
-    public Optional<NewParcelInfo> createParcel(Parcel parcel) throws ConstraintViolationException {
+    public Optional<NewParcelInfo> createParcel(Parcel parcel) throws ConstraintViolationException, IOException {
 
         ParcelEntity parcelEntity = mapper.parcelToParcelEntity(parcel);
 
-        parcelEntity.setTrackingId("PYJRB4HZ6");
+        Generex generex = new Generex("[A-Z0-9]{9}");
+
+        Random rand = new Random();
+
+        parcelEntity.setTrackingId(generex.getMatchedString(rand.nextInt(Integer.MAX_VALUE)));
+
+        OSMEncodingProxy proxy = new OSMEncodingProxy();
+
+        RecipientEntity rec = parcelEntity.getRecipient();
+        RecipientEntity sen = parcelEntity.getSender();
+
+        String recAddress = rec.getStreet() + "," + rec.getPostalCode() + " " + rec.getCity() + "," + rec.getCountry();
+        String senAddress = sen.getStreet() + "," + sen.getPostalCode() + " " + sen.getCity() + "," + sen.getCountry();
+
+        Point recPoint = proxy.encodeAddress(recAddress);
+        Point senPoint = proxy.encodeAddress(senAddress);
+
+        System.out.println(recPoint.getX());
+        System.out.println(recPoint.getY());
+        System.out.println(senPoint.getX());
+        System.out.println(senPoint.getY());
+
+        parcelEntity.setState(TrackingInformation.StateEnum.PICKUP);
+
+        parcelEntity.setVisitedHops(new ArrayList<>());
+        parcelEntity.setFutureHops(new ArrayList<>());
 
         try{
             ObjectValidator.getInstance().validate(parcelEntity);
@@ -100,7 +130,43 @@ public class ParcelServiceImpl implements ParcelService {
     }
 
     @Override
-    public void transitionParcel(Parcel parcel){
+    public void transitionParcel(String trackingId, Parcel parcel) throws IOException {
 
+        ParcelEntity parcelEntity = mapper.parcelToParcelEntity(parcel);
+
+        parcelEntity.setTrackingId(trackingId);
+
+        OSMEncodingProxy proxy = new OSMEncodingProxy();
+
+        RecipientEntity rec = parcelEntity.getRecipient();
+        RecipientEntity sen = parcelEntity.getSender();
+
+        String recAddress = rec.getStreet() + "," + rec.getPostalCode() + " " + rec.getCity() + "," + rec.getCountry();
+        String senAddress = sen.getStreet() + "," + sen.getPostalCode() + " " + sen.getCity() + "," + sen.getCountry();
+
+        Point recPoint = proxy.encodeAddress(recAddress);
+        Point senPoint = proxy.encodeAddress(senAddress);
+
+        System.out.println(recPoint.getX());
+        System.out.println(recPoint.getY());
+        System.out.println(senPoint.getX());
+        System.out.println(senPoint.getY());
+
+        parcelEntity.setState(TrackingInformation.StateEnum.PICKUP);
+
+        parcelEntity.setVisitedHops(new ArrayList<>());
+        parcelEntity.setFutureHops(new ArrayList<>());
+
+        try{
+            ObjectValidator.getInstance().validate(parcelEntity);
+            ObjectValidator.getInstance().validate(parcelEntity.getRecipient());
+            ObjectValidator.getInstance().validate(parcelEntity.getSender());
+        } catch (HibernateError e) {
+            log.warn("Invalid Parcel");
+        }
+
+        repository.save(parcelEntity);
+
+        log.info("Parcel transitioned");
     }
 }

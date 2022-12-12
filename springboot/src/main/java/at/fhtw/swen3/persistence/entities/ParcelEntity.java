@@ -4,6 +4,7 @@ import at.fhtw.swen3.services.dto.TrackingInformation;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -29,17 +30,20 @@ public class ParcelEntity {
     private String trackingId;
 
     //Tracking information
+    @NotNull
     private TrackingInformation.StateEnum state;
 
+    @NotNull
     @OneToMany(mappedBy = "parcel")
     private List<HopArrivalEntity> visitedHops = new ArrayList<>();
 
+    @NotNull
     @OneToMany(mappedBy = "parcel")
     private List<HopArrivalEntity> futureHops = new ArrayList<>();
 
     //Parcel
 
-    @Min(0)
+    @DecimalMin(value="0.0")
     private Float weight;
 
     @NotNull

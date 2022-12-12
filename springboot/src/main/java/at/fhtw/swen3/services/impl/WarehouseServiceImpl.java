@@ -50,6 +50,7 @@ public class WarehouseServiceImpl implements WarehouseService {
     public Optional<Warehouse> getWarehouseByCode (String code){
 
         List<WarehouseEntity> result = repository.findByCode(code);
+        //List<WarehouseEntity> result = new ArrayList<>();
 
         if(result.isEmpty()){
             log.warn("Warehouses by code are empty");

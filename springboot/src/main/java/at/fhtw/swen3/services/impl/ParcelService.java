@@ -4,6 +4,7 @@ import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
 import at.fhtw.swen3.services.dto.TrackingInformation;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public interface ParcelService {
@@ -12,10 +13,10 @@ public interface ParcelService {
 
     public void reportParcelHop();
 
-    public Optional<NewParcelInfo> createParcel(Parcel parcel);
+    public Optional<NewParcelInfo> createParcel(Parcel parcel) throws IOException;
 
     public Optional<TrackingInformation> getTrackingInformation(String trackingId);
 
-    public void transitionParcel(Parcel parcel);
+    public void transitionParcel(String trackingId, Parcel parcel) throws IOException;
 
 }

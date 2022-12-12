@@ -27,8 +27,10 @@ public class HopArrivalEntity {
     @Pattern(regexp = "[A-Za-z0-9- ]+")
     private String description;
 
+    @NotNull
     private OffsetDateTime dateTime;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "parcel")
     private ParcelEntity parcel;

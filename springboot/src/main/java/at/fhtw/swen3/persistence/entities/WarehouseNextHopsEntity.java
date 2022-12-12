@@ -21,6 +21,7 @@ public class WarehouseNextHopsEntity {
 
     private Integer travelTimeMinutes;
 
+    @NotNull
     @OneToOne
     private HopEntity hop;
 

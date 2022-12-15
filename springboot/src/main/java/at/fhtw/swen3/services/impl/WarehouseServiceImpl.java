@@ -3,6 +3,7 @@ package at.fhtw.swen3.services.impl;
 import at.fhtw.swen3.persistence.entities.WarehouseEntity;
 import at.fhtw.swen3.persistence.repositories.WarehouseRepository;
 import at.fhtw.swen3.services.dto.Warehouse;
+import at.fhtw.swen3.services.WarehouseService;
 import at.fhtw.swen3.services.mapper.WarehouseMapperImpl;
 import at.fhtw.swen3.services.validation.ObjectValidator;
 import lombok.RequiredArgsConstructor;

@@ -2,7 +2,7 @@ package at.fhtw.swen3.controller.rest;
 
 
 import at.fhtw.swen3.services.dto.Warehouse;
-import at.fhtw.swen3.services.impl.WarehouseService;
+import at.fhtw.swen3.services.WarehouseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -81,7 +81,7 @@ public class ParcelServiceImpl implements ParcelService {
 
         OSMEncodingProxy proxy = new OSMEncodingProxy();
 
-        RecipientEntity rec = parcelEntity.getRecipient();
+        /*RecipientEntity rec = parcelEntity.getRecipient();
         RecipientEntity sen = parcelEntity.getSender();
 
         String recAddress = rec.getStreet() + "," + rec.getPostalCode() + " " + rec.getCity() + "," + rec.getCountry();
@@ -93,7 +93,7 @@ public class ParcelServiceImpl implements ParcelService {
         System.out.println(recPoint.getX());
         System.out.println(recPoint.getY());
         System.out.println(senPoint.getX());
-        System.out.println(senPoint.getY());
+        System.out.println(senPoint.getY());*/
 
         parcelEntity.setState(TrackingInformation.StateEnum.PICKUP);
 
@@ -136,7 +136,7 @@ public class ParcelServiceImpl implements ParcelService {
 
         parcelEntity.setTrackingId(trackingId);
 
-        OSMEncodingProxy proxy = new OSMEncodingProxy();
+        /*OSMEncodingProxy proxy = new OSMEncodingProxy();
 
         RecipientEntity rec = parcelEntity.getRecipient();
         RecipientEntity sen = parcelEntity.getSender();
@@ -150,7 +150,7 @@ public class ParcelServiceImpl implements ParcelService {
         System.out.println(recPoint.getX());
         System.out.println(recPoint.getY());
         System.out.println(senPoint.getX());
-        System.out.println(senPoint.getY());
+        System.out.println(senPoint.getY());*/
 
         parcelEntity.setState(TrackingInformation.StateEnum.PICKUP);
 

@@ -31,4 +31,6 @@ public class RecipientEntity {
 
     @Pattern(regexp = "[A-Za-zöÖüÜäÄåç]+")
     private String country;
+
+    private String expoPushToken;
 }

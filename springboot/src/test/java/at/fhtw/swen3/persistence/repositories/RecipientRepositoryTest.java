@@ -22,7 +22,7 @@ class RecipientRepositoryTest {
     @Test
     void recipientRepositoryTest(){
 
-        RecipientEntity recipientEntity = new RecipientEntity(null, "John Doe", "Kaerntnerstraße 1", "A-1010", "Vienna", "Austria");
+        RecipientEntity recipientEntity = new RecipientEntity(null, "John Doe", "Kaerntnerstraße 1", "A-1010", "Vienna", "Austria", null);
 
         //Create
         repository.save(recipientEntity);

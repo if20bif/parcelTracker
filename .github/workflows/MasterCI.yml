@@ -75,9 +75,9 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: mvn verify -Psurefire
+        cache: maven
     - name: Integration test with Maven
-      run: mvn -B package --file springboot/pom.xml -Dmaven.test.skip=true
+      run: mvn verify -Psurefire
 
   deploy-production:
     needs: integration-test

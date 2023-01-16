@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "transfer_warehouse")
-public class TransferwarehouseEntity {
+public class TransferwarehouseEntity extends HopEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

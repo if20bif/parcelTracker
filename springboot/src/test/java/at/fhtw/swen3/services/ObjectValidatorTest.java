@@ -40,8 +40,8 @@ class ObjectValidatorTest {
 
     @BeforeAll
     void setup(){
-        validRecipientEntity = new RecipientEntity(null, "John Doe", "Hoechstaedtplatz 6", "A-1200", "Vienna", "Austria");
-        invalidRecipientEntity = new RecipientEntity(null,"jane doe", "Kärtner Straße", "1234", "linz", null);
+        validRecipientEntity = new RecipientEntity(null, "John Doe", "Hoechstaedtplatz 6", "A-1200", "Vienna", "Austria", null);
+        invalidRecipientEntity = new RecipientEntity(null,"jane doe", "Kärtner Straße", "1234", "linz", null, null);
 
         validParcelEntity = new ParcelEntity(null, "123456789", TrackingInformation.StateEnum.DELIVERED, new ArrayList<>(), new ArrayList<>(), 1.0f, validRecipientEntity, validRecipientEntity);
         invalidParcelEntity = new ParcelEntity(null, "123", null, new ArrayList<>(), new ArrayList<>(), -1.0f, null, null);

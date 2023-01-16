@@ -1,7 +1,10 @@
 package at.fhtw.swen3.services.impl;
 
+import at.fhtw.swen3.model.Notification;
 import at.fhtw.swen3.persistence.entities.ParcelEntity;
 import at.fhtw.swen3.persistence.repositories.ParcelRepository;
+import at.fhtw.swen3.service.NotificationService;
+import at.fhtw.swen3.service.impl.NotificationServiceImpl;
 import at.fhtw.swen3.service.impl.OSMEncodingProxy;
 import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
@@ -109,6 +112,10 @@ public class ParcelServiceImpl implements ParcelService {
         }
 
         repository.save(parcelEntity);
+
+        NotificationService notificationService = new NotificationServiceImpl();
+
+        notificationService.sendNotification(new Notification(parcelEntity.getTrackingId(), parcelEntity));
 
         log.info("Parcel created");
         return Optional.of(mapper.parcelEntityToNewParcelInfo(parcelEntity));
